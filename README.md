@@ -3,7 +3,7 @@
 ## 一个Meteor编写的[在线教育网站](http://learn-app.meteor.com)程序
 
 Learn 是一个[Meteor](http://meteor.com)编写的[在线教育网站](http://learn-app.meteor.com)程序，实时WEB，重要的在于分享以及讨论使用Meteor这个有趣的东西在编写程序遇到的事情
-                
+
 DEMO地址:[http://learn-app.meteor.com](http://learn-app.meteor.com)
 
 
@@ -18,7 +18,11 @@ DEMO地址:[http://learn-app.meteor.com](http://learn-app.meteor.com)
 $ git clone https://github.com/billyct/learn.git
 ```
 
-### 步骤 2: 安装
+### 步骤 2: 设置
+配置lib/setting.js文件里面的github开放平台和qiniu的存储秘钥等配置
+可以在collections/schemas.coffee文件里，初始化课程类型等数据
+
+### 步骤 3: 安装
 
 ```bash
 $ cd learn

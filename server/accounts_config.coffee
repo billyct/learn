@@ -6,28 +6,28 @@ ServiceConfiguration.configurations.remove({
 
 ServiceConfiguration.configurations.insert({
   service: "github",
-  clientId: "0fc2b5ae4cf8bc7bf330",
-  secret: "52d062ee0335ec002c1cd9aeaf73206de46cc3da"
+  clientId: AppSetting.github.clientId,
+  secret: AppSetting.github.secret
 });
 
-ServiceConfiguration.configurations.remove({
-  service: "weibo"
-});
-
-ServiceConfiguration.configurations.insert({
-  service: "weibo",
-  clientId: "320306549",
-  secret: "774a1b91d2571bab41f16aedbc2c0b6a"
-});
+# ServiceConfiguration.configurations.remove({
+#   service: "weibo"
+# });
+#
+# ServiceConfiguration.configurations.insert({
+#   service: "weibo",
+#   clientId: "320306549",
+#   secret: "774a1b91d2571bab41f16aedbc2c0b6a"
+# });
 
 
 
 profileConvert = (profile, type) ->
-    if type is 'weibo'
-        profileConverted = {
-            name : profile.name
-            avatar : profile.profile_image_url
-        }
+    # if type is 'weibo'
+    #     profileConverted = {
+    #         name : profile.name
+    #         avatar : profile.profile_image_url
+    #     }
     if type is 'github'
         profileConverted = {
             name : profile.name
