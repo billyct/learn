@@ -1,0 +1,24 @@
+<template name="course_tech_menu_items">
+
+    <div class="line"></div>
+
+    <div id="section_list">
+        {{#each this}}
+        <div class="box_style_1 section-item" id="{{_id}}">
+            <h4 class="chapter_course">
+                <a href='{{pathFor "section_edit" courseId=course _id=_id}}'>{{index}}.{{title}}</a>
+            </h4>
+            <ul class="list_1 lecture-list">
+                {{#each lectures}}
+                <li class="lecture-item" id="{{_id}}">
+                    <a href='{{pathFor "lecture_edit" courseId=course _id=_id}}' class='{{active "lecture_edit" courseId=course _id=_id}}'>
+                        {{title}}
+                    </a>
+                </li>
+                {{/each}}
+
+            </ul>
+        </div>
+        {{/each}}
+    </div>
+</template>

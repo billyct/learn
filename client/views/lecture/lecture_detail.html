@@ -1,0 +1,70 @@
+<template name="lecture_detail">
+    <section id="main_content">
+  <div class="container">
+
+	 <div class="row">
+     		<div class="col-md-8">
+            <h2 class="title">{{lecture.title}}</h2>
+
+            <div class="line"></div>
+
+            {{#if $eq lecture.type "video"}}
+                {{#if lecture.video}}
+                    {{>course_video lecture}}
+                {{/if}}
+            {{/if}}
+
+            {{#if $eq lecture.type "audio"}}
+                {{#if lecture.audio}}
+                    {{>lecture_audio lecture}}
+                {{/if}}
+            {{/if}}
+
+
+            {{{lecture_text}}}
+
+            <hr>
+            <div class="clearfix text-center">
+                <a href='{{pathFor "lecture_detail" _id=lecture.pre_lecture._id}}' class="pull-left button_medium_outline"> <i class="icon-left-open"></i></a>
+                {{#if lecture.is_completed}}
+                <a href="#" id="mark-as-complete" class="button_medium_outline" disabled>已经完成</a>
+                {{else}}
+                <a href="#" id="mark-as-complete" class="button_medium_outline">标记为已经完成</a>
+                {{/if}}
+                <a href='{{pathFor "lecture_detail" _id=lecture.next_lecture._id}}' class="pull-right button_medium_outline"><i class="icon-right-open"></i></a></div>
+            </div><!-- End col-md-8  -->
+
+            <aside class="col-md-4">
+
+                   {{#each course.sections}}
+                   <div class="box_style_1">
+                   <h4 class="chapter_course">{{index}}.{{title}}</h4>
+                   <ul class="list_1">
+                       {{#each lectures}}
+                       <li>
+                           <a href='{{pathFor "lecture_detail" _id=_id}}'>
+                               {{title}}
+                               {{#if typeCheck "text"}}
+                               <i class="icon-doc text-warning-lter"></i>
+                               {{/if}}
+                               {{#if typeCheck "video"}}
+                               <i class="icon-video text-warning-lter"></i>
+                               {{/if}}
+                               {{#if typeCheck "audio"}}
+                               <i class="icon-mic text-warning-lter"></i>
+                               {{/if}}
+                               <i class="icon-clock"></i>{{time}}
+                           </a>
+                       </li>
+                       {{/each}}
+                   </ul>
+               </div>
+                   {{/each}}
+
+
+            </aside> <!-- End col-md-4 -->
+
+     </div><!-- End row -->
+  </div><!-- End container -->
+  </section>
+</template>

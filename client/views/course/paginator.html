@@ -1,0 +1,11 @@
+<template name="paginator">
+    <ul class="pagination" id="paginator">
+        {{#with pagination}}
+        <li class="{{pre_page_disabled}}"><a href="{{url}}?page={{pre_page}}">&laquo;</a></li>
+        {{#each pages}}
+        <li class="{{act}}"><a href="{{../url}}?page={{num}}">{{num}}</a></li>
+        {{/each}}
+        <li class="{{next_page_disabled}}"><a href="{{url}}?page={{next_page}}">&raquo;</a></li>
+        {{/with}}
+    </ul>
+</template>

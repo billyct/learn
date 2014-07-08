@@ -1,0 +1,47 @@
+<template name="profile_left_side">
+{{#if user.isAdmin}}
+
+<div class="thumbnail">
+    <div class="project-item-image-container">
+        <img src="{{user.profile.avatar}}" alt="">
+    </div>
+    <div class="caption">
+        <div class="transit-to-top">
+            <h4 class="p-title">{{user.profile.name}}</h4>
+            <div class="widget_nav_menu">
+                <ul class="social_team">
+                    {{#if user.profile.github}}
+                    <li><a href="{{user.profile.github_url}}"><i class="icon-github"></i></a></li>
+                    {{/if}}
+                </ul>
+                <div class="phone-info">
+                    <i class="icon-mail"></i>
+                    {{#each user.emails}}
+                    {{email}}
+                    {{/each}}
+                </div><!-- End phone info -->
+            </div><!-- End widget_nav_menu -->
+        </div><!-- transition top -->
+    </div><!-- caption -->
+</div><!-- End thumbnail -->
+
+{{> current_user_menu user}}
+
+{{else}}
+<div class=" box_style_3 m-t-n-xs">
+    <div class="thumb-lg avatar"><img src="{{user.profile.avatar}}" alt="Teacher" class="img-circle styled"></div>
+    <h4 class="p-title">
+        {{user.profile.name}}
+    </h4>
+
+    <ul class="social_team">
+        {{#if user.profile.github}}
+        <li><a href="{{user.profile.github_url}}"><i class="icon-github"></i></a></li>
+        {{/if}}
+    </ul>
+
+    {{> current_user_menu user}}
+</div>
+{{/if}}
+
+</template>

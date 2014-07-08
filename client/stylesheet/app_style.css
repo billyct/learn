@@ -1,0 +1,33 @@
+.cat_row > div {
+    max-width : 150px;
+}
+
+div#editor {
+    min-height: 100px;
+    padding: 6px 12px;
+    border: 1px solid #ececec;
+}
+
+a#hinted {
+    position: absolute;
+    bottom:10px;
+    right:25px;
+}
+
+
+#preview img {
+    width : 300px;
+    height : 225px;
+    border : 1px solid #ececec;
+}
+
+#preview div#progress {
+    position: absolute;
+    top: 0px;
+    left: 15px;
+    width: 300px;
+    height: 225px;
+    background-color: #eeeeee;
+    opacity: 0.5;
+    line-height: 225px;
+}

@@ -1,0 +1,91 @@
+<template name="lecture_form">
+
+    <section id="main_content">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-4">
+
+                    {{> course_tech_menu course=course}}
+
+
+                </div>
+                <div class="col-md-8">
+                    {{#autoForm doc=lecture collection="Lectures" id="lectureForm" type=method.type meteormethod=method.call class="form-horizontal"}}
+                    <fieldset>
+                        <legend>{{#if isCreate}}创建新课时{{else}}编辑课时:《{{lecture.title}}》{{/if}}</legend>
+
+                        <div class="form-group">
+                            {{> afFieldLabel name="section" class="col-sm-2"}}
+                            <div class="col-sm-10">
+                                <div class="styled-select">
+                                    {{> afFieldInput name="section" options=sectionOptions}}
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            {{> afFieldLabel name="type" class="col-sm-2"}}
+                            <div class="col-sm-10">
+                                <div class="styled-select">
+                                    {{> afFieldInput name="type" options=typeOptions}}
+                                </div>
+                            </div>
+                        </div>
+
+                        {{> afQuickField name='title' template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-10"}}
+
+
+
+                        <div class="form-group" id="text-field">
+                            {{> afFieldLabel name="text" class="col-sm-2"}}
+                            <div class="col-sm-10">
+                                {{#with textReady}}
+                                {{> afFieldInput name="text" template="markdown" rows=20}}
+                                {{/with}}
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="video-field" style="{{#if audioShow}}display:none;{{/if}}{{#if textShow}}display:none;{{/if}}">
+                            {{> afFieldLabel name="video" class="col-sm-2"}}
+                            <div class="col-sm-10">
+                                {{> afFieldInput name="video" template="filemedia" dataType="video"}}
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="audio-field" style="{{#if videoShow}}display:none;{{/if}}{{#if textShow}}display:none;{{/if}}">
+                            {{> afFieldLabel name="audio" class="col-sm-2"}}
+                            <div class="col-sm-10">
+                                {{> afFieldInput name="audio" template="filemedia" dataType="audio"}}
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group" id="audio-field">
+                            {{> afFieldLabel name="time" class="col-sm-2"}}
+                            <div class="col-sm-10">
+                                {{> afFieldInput name="time" template="timepicker"}}
+                            </div>
+                        </div>
+
+                        {{> afFieldInput name="course" type="hidden" value=course._id}}
+                        {{> afFieldInput name="order" type="hidden"}}
+
+                    </fieldset>
+                    <div class="line line-dashed"></div>
+                    <div class="form-group m-t-lg m-l-lg">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" id="submit" class="button_medium btn-lg r-n">保存</button>
+                            {{> back_button "取消"}}
+                        </div>
+                    </div>
+
+                    {{/autoForm}}
+                </div>
+            </div>
+        </div>
+    </section>
+
+</template>

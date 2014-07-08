@@ -1,0 +1,66 @@
+<template name="profile">
+    <section id="main_content">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-4">
+                    {{> profile_left_side user=user}}
+                </div>
+
+                <div class="col-md-8">
+
+                    {{#if courses}}
+                    <ul class="cbp_tmtimeline">
+                        {{#each courses}}
+                        <li>
+                            <time class="cbp_tmtime" datetime="{{created_at}}">
+                                <span>{{fromNow created_at}}</span>
+                                <span>发布</span>
+                            </time>
+                            <div class="cbp_tmicon timeline_icon_study"></div>
+                            <div class="cbp_tmlabel">
+                                <div class="pull-right">
+                                    {{#if $eq ../user._id currentUser._id}}
+                                    <a href='{{pathFor "course_edit" _id=_id}}' class="btn btn-default r-n">编辑</a>
+                                    {{/if}}
+                                </div>
+                                <h2>
+                                    <span>{{index}}</span>
+                                    <a href='{{pathFor "course_detail" index=index}}'>{{name}}</a>
+                                </h2>
+
+                                {{#if poster}}
+
+                                <div class="m-b">
+                                    <img src="{{poster.path}}" alt="" class="img-thumbnail">
+                                </div>
+                                {{/if}}
+
+                                <p>{{description}} </p>
+
+                                {{>categories_widget categories}}
+                            </div>
+                        </li>
+                        {{/each}}
+
+                    </ul>
+                    {{else}}
+
+                    <p>
+                        还没有课程记录,
+                        {{#if current}}
+                        <a href='{{pathFor "courses"}}' class="button_medium">去发现课程</a>
+                        {{/if}}
+                    </p>
+                    {{/if}}
+
+
+
+                    <hr class="add_bottom_45">
+                </div>
+            </div>
+
+        </div><!-- End container -->
+
+    </section>
+</template>

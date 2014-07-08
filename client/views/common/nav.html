@@ -1,0 +1,44 @@
+<template name="nav">
+<nav>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="mobnav-btn"></div>
+                    <ul class="sf-menu">
+                        <li>
+                            <a href="{{pathFor 'home'}}">首页</a>
+
+                        </li>
+                        <li>
+                            <a href="{{pathFor 'courses'}}">课程</a>
+                            <div class="mobnav-subarrow"></div>
+                            <ul>
+                                {{#each categories}}
+                                <li>
+                                    <a href="{{pathFor 'courses_by_category' index=index}}">{{name}}</a>
+                                </li>
+                                {{/each}}
+
+                            </ul>
+                        </li>
+
+                    </ul>
+
+                    <div class="col-md-4 pull-right hidden-sm hidden-xs">
+                        <div id="sb-search" class="sb-search">
+                            <form>
+                                <input class="sb-search-input" placeholder="搜索课程" type="text" value="" name="search" id="search">
+                                <input class="sb-search-submit" type="submit" value="">
+                                <span class="sb-icon-search"></span>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- End search -->
+
+                </div>
+            </div>
+            <!-- End row -->
+        </div>
+        <!-- End container -->
+    </nav>
+</template>

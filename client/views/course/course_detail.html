@@ -1,0 +1,146 @@
+<template name="course_detail">
+    <section id="sub-header" >
+  	<div class="container">
+
+    	<div class="row">
+        	<div class="col-md-12 text-center">
+            	<h1>{{course.name}}</h1>
+            </div>
+        </div><!-- End row -->
+
+        <div class="row" id="sub-header-features-2">
+
+
+            {{#if course.video}}
+            <div class="col-md-6 col-md-offset-3 m-t-lg">
+                {{>course_video course}}
+            </div>
+            {{/if}}
+
+
+            <div class="col-md-6 col-md-offset-3 m-t-lg">
+                {{#markdown}}{{course.description}}{{/markdown}}
+            </div>
+
+
+
+
+
+
+        </div><!-- End row -->
+    </div><!-- End container -->
+    <div class="divider_top"></div>
+  </section>
+
+  <section id="main_content">
+  <div class="container">
+
+	 <div class="row">
+     		<div class="col-md-8">
+
+
+                    {{#if currentUser}}
+
+                    <div class="row">
+                    	<div class="col-md-12">
+                        	<span id="end"><i class="icon-trophy"></i></span>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-info" role="progressbar" style="width: {{percent complete_count course.lecture_count}}%;">
+                                    <span>您已经完成了<strong>{{course.lecture_count}}</strong>个课时中的<strong>{{complete_count}}</strong>课时</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- End progress bar -->
+
+
+                    <div class="line line-dashed"></div>
+
+
+                    {{/if}}
+
+
+                    <div class="{{#if currentUser}}m-t-n-sm{{else}}m-t-n-25{{/if}}" >
+                        {{#each course.sections}}
+                        <h3 class="chapter_course">{{index}}.{{title}}</h3>
+                            {{#each lectures}}
+                            <div class="strip_single_course">
+                                <h4 class="{{study_progress}}"><a href='{{pathFor "lecture_detail" _id=_id}}'>{{title}}</a></h4>
+                                <ul>
+                                      <li><i class="icon-clock"></i> {{time}}</li>
+                                      {{#if $eq type "text"}}
+                                      <li><i class="icon-doc"></i></li>
+                                      {{/if}}
+
+                                      {{#if $eq type "video"}}
+                                      <li><i class="icon-video"></i></li>
+                                      {{/if}}
+
+                                      {{#if $eq type "audio"}}
+                                      <li><i class="icon-mic"></i></li>
+                                      {{/if}}
+                                </ul>
+                            </div>
+                            {{/each}}
+                        {{/each}}
+                    </div>
+
+                    <!-- {{> course_detail_sections course }} -->
+
+
+            </div><!-- End col-md-8  -->
+
+            <aside class="col-md-4">
+
+                {{#if $eq course.teacher._id currentUser._id}}
+                <a href='{{pathFor "course_edit" _id=course._id}}' class=" button_fullwidth-3">编辑课程信息</a>
+                {{else}}
+                <a href="#" class=" button_fullwidth-3">开始学习</a>
+                {{/if}}
+
+
+
+
+            	<div class="box_style_1">
+
+
+                    <div class="text-center">
+                        <div class="thumb-lg avatar">
+                            <a href='{{pathFor "profile" _id=course.teacher._id}}'>
+                                <img src="{{course.teacher.profile.avatar}}" alt="">
+                            </a>
+                        </div>
+                        <a href='{{pathFor "profile" _id=course.teacher._id}}'><h5>{{course.teacher.profile.name}}</h5></a>
+                        <ul class="social_team">
+                            {{#if course.teacher.profile.github}}
+                            <li><a href="{{course.teacher.profile.github_url}}"><i class="icon-github"></i></a></li>
+                            {{/if}}
+                        </ul>
+                    </div>
+
+                    <p>Java课程研究兼总部教务领先者 ，任职项目经理、技术总监、系统架构师等职务。</p>
+
+
+                    <div class="line line-dashed"></div>
+
+
+                    <h4>课时 <span class="pull-right">{{course.lecture_count}}</span></h4>
+                    <h4>时长 <span class="pull-right">{{course.time_count.minutes}}:{{course.time_count.seconds}}</span></h4>
+
+
+
+           </div>
+
+            <div class="box_style_1">
+                    <h4>说明</h4>
+                    <ul class="legend_course">
+                          <li id="tostart">等待开始</li>
+                          <li id="inprogress">正在进行</li>
+                          <li id="completed">已经完成</li>
+                     </ul>
+           </div>
+         </aside> <!-- End col-md-4 -->
+
+     </div><!-- End row -->
+  </div><!-- End container -->
+  </section>
+</template>

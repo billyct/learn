@@ -1,0 +1,20 @@
+<template name="afTextarea_epic">
+    <div></div>
+    <textarea {{atts}} class="hidden">{{this.value}}</textarea>
+</template>
+
+
+<template name="afTextarea_pen">
+    <div id="editor" {{atts}}>
+        {{#markdown}}{{this.value}}{{/markdown}}
+    </div>
+    <a href="#" id="hinted" class="btn btn-icon btn-default pull-right btn-rounded m-t-xs">
+        <span class="icon-code" title="查看markdown代码"></span>
+    </a>
+</template>
+
+
+
+<template name="afTextarea_markdown">
+    <textarea {{atts}}>{{this.value}}</textarea>
+</template>

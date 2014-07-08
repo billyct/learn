@@ -1,0 +1,14 @@
+<template name="afSelect_select2">
+    <!-- {{#if loaded}} -->
+    <select {{atts}} style="min-width:200px">
+        {{#each this.items}}
+            {{#if this.selected}}
+            <option value="{{this.value}}" selected="true">{{this.label}}</option>
+            {{else}}
+            <option value="{{this.value}}">{{this.label}}</option>
+            {{/if}}
+        {{/each}}
+    </select>
+    <!-- {{/if}} -->
+
+</template>

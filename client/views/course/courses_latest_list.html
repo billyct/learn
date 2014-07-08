@@ -1,0 +1,31 @@
+<template name="courses_latest_list">
+    <section id="main_content_gray padder-v">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h2>最新课程</h2>
+                    <p class="lead">由多家知名机构和讲师提供的实用技能课程，涵盖多种类别，助你在职场中获得全新的提升。</p>
+                </div>
+            </div>
+            <!-- End row -->
+
+            <div class="row">
+
+                {{#each this}}
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    {{> courses_list_item }}
+                </div>
+                {{/each}}
+
+            </div>
+            <!-- End row -->
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <a href="{{pathFor 'courses'}}" class="button_medium_outline">浏览所有课程</a>
+                </div>
+            </div>
+        </div>
+        <!-- End container -->
+    </section>
+    <!-- End section gray -->
+</template>

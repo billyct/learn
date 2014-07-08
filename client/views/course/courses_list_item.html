@@ -1,0 +1,63 @@
+<template name="courses_list_item">
+
+    <div class="col-item">
+        {{#if best_selling}}
+        <span class="ribbon_course"></span>
+        {{/if}}
+        <div class="photo">
+            <a href="{{pathFor 'course_detail' index=index}}">
+                {{#if poster}}
+                <img src="{{poster.path}}" alt="{{name}}" />
+                {{else}}
+                <img data-src="holder.js/260x195/vine/text:{{name}}" alt="{{name}}" />
+                {{/if}}
+            </a>
+            <div class="cat_row font-thin text-md">
+
+                <a href="{{pathFor 'course_detail' index=index}}" title="{{name}}">
+                    {{dotdotdot20 name}}
+                </a>
+
+                <span class="pull-right">
+                    <i class=" icon-clock"></i>{{fromNow created_at}}
+                </span>
+            </div>
+        </div>
+        <div class="info">
+            <div class="row">
+                <div class="course_info col-md-12 col-sm-12">
+
+                    <p class="text-desc m-b">{{dotdotdot60 description}}</p>
+
+                    <div class="m-b">
+                        <i class="icon-tags"></i>
+
+                        {{#each categories}}
+                        {{> category_tag_label }}
+                        {{/each}}
+                    </div>
+
+                    <div class="m-b">
+                        <i class="icon-yen"></i>
+                        {{#if price}}
+                        <span class="label label-orange r-n">
+                            ￥{{price}}
+                        </span>
+                        {{else}}
+                        <span class="label label-info r-n">
+                            免费
+                        </span>
+                        {{/if}}
+                    </div>
+
+                </div>
+            </div>
+            <div class="text-center clearfix b-t">
+                <a href="{{pathFor 'course_detail' index=index}}" class="btn btn-default btn-block m-t-sm r-n">
+                    <i class="icon-list"></i>查看课程
+                </a>
+            </div>
+        </div>
+    </div>
+
+</template>

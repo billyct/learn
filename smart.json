@@ -1,0 +1,24 @@
+{
+  "packages": {
+    "simple-schema": {},
+    "collection2": {},
+    "minimongoid": {},
+    "iron-router": {},
+    "bootstrap-3": {},
+    "spin": {},
+    "moment": {},
+    "collection-hooks": {},
+    "popcorn": {},
+    "accounts-entry": {},
+    "autoform": {},
+    "select2": {},
+    "holder": {},
+    "bootboxjs": {},
+    "pen": {},
+    "jquery-timepicker": {},
+    "npm": {},
+    "highlightjs": {},
+    "sp-epic-editor": {},
+    "sortable": {}
+  }
+}

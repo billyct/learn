@@ -1,0 +1,25 @@
+<template name="current_user_menu">
+    {{#if $eq _id currentUser._id}}
+        {{#unless isAdmin}}
+        <div class="line line-dashed"></div>
+        {{/unless}}
+        <ul class="list_1">
+            <li>
+                <a href="">个人设置</a>
+            </li>
+
+            <li>
+                <a href="">修改密码</a>
+            </li>
+
+            <li>
+                <a href="">消息设置</a>
+            </li>
+        </ul>
+        {{#if isAdmin}}
+        <a href='{{pathFor "course_create"}}' class="button_medium_outline btn-block">创建课程<i class="icon-plus pull-right"></i></a>
+        {{else}}
+        <a href='{{pathFor "course_create"}}' class="button_medium_outline">创建课程</a>
+        {{/if}}
+    {{/if}}
+</template>

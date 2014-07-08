@@ -1,0 +1,113 @@
+<template name="entry_signUp">
+
+
+    <section id="sign_bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+                    <div id="sign">
+
+                        {{#if logo}}
+                          <p class="text-center">
+                              <img src="{{logo}}" alt="logo">
+                          </p>
+                        {{/if}}
+                        <hr>
+
+                        <p class="entry-signin-cta">{{t9n "ifYouAlreadyHaveAnAccount"}} <a href="/sign-in">{{t9n "signin"}}</a>.</p>
+
+                        {{#if otherLoginServices}}
+                        <div class="row">
+                          {{#each loginServices}}
+                            {{> entry_social}}
+                          {{/each}}
+                        </div>
+                        {{/if}}
+                        <!-- end row -->
+
+                        {{#if passwordLoginService}}
+                        <div class="sign-or">
+                            <hr class="hr-or">
+                            <span class="span-or">{{t9n "OR"}}</span>
+                        </div>
+                        {{/if}}
+
+                        <a data-toggle="collapse" href="#signUp">
+                          {{t9n "signUpWithYourEmailAddress"}}
+                        </a>
+
+
+
+                        <hr>
+                        {{> entryError}}
+
+                        {{#if passwordLoginService}}
+                          <form class="{{signupClass}}" id='signUp'>
+                            {{#if showUsername}}
+                              <div class="form-group">
+                                <input autofocus name="username" type="string" class="form-control" placeholder='{{t9n "username"}}' value=''>
+                                <span class="input-icon">
+                                    <i class=" icon-user"></i>
+                                </span>
+                              </div>
+                            {{/if}}
+
+                            {{#if showEmail}}
+                              <div class="form-group">
+                                {{#if showUsername}}
+                                  <input type="email" class="form-control" placeholder='{{t9n "emailAddress"}}'>
+                                {{else}}
+                                  <input autofocus type="email" class="form-control" placeholder='{{t9n "emailAddress"}}'>
+                                {{/if}}
+
+                                <span class="input-icon">
+                                    <i class="icon-email"></i>
+                                </span>
+                              </div>
+                            {{/if}}
+
+                            <div class="form-group">
+                              <input type="password" class="form-control" placeholder='{{t9n "password"}}'>
+                              <span class="input-icon">
+                                  <i class=" icon-lock"></i>
+                              </span>
+                            </div>
+
+                            {{#if showSignupCode}}
+                              <div class="form-group">
+                                <input name="signupCode" type="string" class="form-control" placeholder='{{t9n "signupCode"}}'>
+                                <span class="input-icon">
+                                    <i class=" icon-code"></i>
+                                </span>
+
+                              </div>
+                            {{/if}}
+
+                            <button type="submit" class="button_fullwidth">{{t9n "signUp"}}</button>
+                          </form>
+                        {{/if}}
+                        {{#if both}}
+                          <p class="entry-agreement">{{t9n "clickAgree"}}
+                            <a href="{{privacyUrl}}">{{t9n "privacyPolicy"}}</a> {{t9n "and"}}
+                            <a href="{{termsUrl}}">{{t9n "terms"}}</a>.
+                          </p>
+                        {{else}}
+                          {{#unless neither}}
+                            <p class="entry-agreement">{{t9n "clickAgree"}}
+                              {{#if privacyUrl}}<a href="{{privacyUrl}}">{{t9n "privacyPolicy"}}</a>.{{/if}}
+                              {{#if termsUrl}}<a href="{{termsUrl}}">{{t9n "terms"}}</a>.{{/if}}
+                            </p>
+                          {{/unless}}
+                        {{/if}}
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End register -->
+
+
+
+</template>

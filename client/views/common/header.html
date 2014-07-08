@@ -1,0 +1,39 @@
+<template name="header">
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-3 col-xs-3">
+                <a href="/" id="logo">Learn</a>
+            </div>
+            <div class="col-md-9 col-sm-9 col-xs-9">
+                {{#if currentUser}}
+                <div class=" pull-right">
+
+                    <div class="dropdown">
+                        <a id="login_top" class="button_top no-padder bg-empty thumb-sm avatar"
+                        role="button" data-toggle="dropdown" data-target="#" href="#">
+                            <img src="{{currentUser.profile.avatar}}" />
+                            <span class="caret hidden-xs"></span>
+                        </a>
+
+
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href='{{pathFor "profile"}}'>个人主页</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/sign-out" >退出</a></li>
+                        </ul>
+                    </div>
+
+
+                </div>
+                {{else}}
+                <div class=" pull-right">
+                    <a href="/sign-in" class="button_top" id="login_top">登录/注册</a>
+                </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</header>
+<!-- End header -->
+</template>

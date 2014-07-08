@@ -1,0 +1,23 @@
+<template name="afCheckbox_switch">
+
+    <label class="switch">
+        {{#if this.value}}
+        <input type="checkbox" value="{{this.value}}" {{atts}} checked>
+        {{else}}
+        <input type="checkbox" value="{{this.value}}" {{atts}}>
+        {{/if}}
+        <span></span>
+    </label>
+
+
+
+    <!-- <label class="switch-light switch-ios ">
+        <input type="checkbox" class="fix_ie8" value="{{this.value}}" {{atts}}>
+        <span>
+            <span class="ie8_hide">否</span>
+            <span>是</span>
+        </span>
+        <a></a>
+    </label> -->
+
+</template>

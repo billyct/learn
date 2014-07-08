@@ -1,0 +1,20 @@
+<template name="course_tech_menu">
+
+    <a href='{{pathFor "course_edit" _id=course._id}}' class="button_fullwidth-3"><i class="icon-book"></i> {{course.name}}</a>
+
+    <div class="box_style_1">
+        <h4 class="chapter_course m-b-lg"><a href='{{pathFor "section_create" courseId=course._id}}'><i class="icon-plus"></i> 新章节</a></h4>
+        <ul class="list_1">
+            <li>
+                <a href='{{pathFor "lecture_create" courseId=course._id}}'>
+                    <i class="icon-plus"></i> 新课时
+                </a>
+            </li>
+        </ul>
+
+    </div>
+
+    {{#with course.sections}}
+    {{>course_tech_menu_items}}
+    {{/with}}
+</template>
