@@ -8,6 +8,7 @@ Learn 是一个[Meteor](http://meteor.com)编写的[在线教育网站](http://l
 demo地址:[http://learn-app.meteor.com](http://learn-app.meteor.com)
 ```
 
+
 ## 开始
 
 确保你已经开始使用[Node](http://nodejs.org)和[Meteor](http://meteor.com)
