@@ -11,4 +11,5 @@ Template.course_video.helpers({
 
 
 Template.course_video.rendered = ->
-    videojs(@find('video'))
+    if @find('video')?
+        videojs(@find('video'))

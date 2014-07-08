@@ -16,7 +16,8 @@
       "jquery-timepicker": {},
       "npm": {},
       "sortable": {},
-      "videojs": {}
+      "videojs": {},
+      "ms-seo": {}
     },
     "packages": {
       "simple-schema": {
@@ -93,6 +94,11 @@
         "git": "https://github.com/nate-strauser/meteor-video-js.git",
         "tag": "v4.1.2",
         "commit": "26b85c5c75d456556bf1a1c5f00264a834813e73"
+      },
+      "ms-seo": {
+        "git": "https://github.com/DerMambo/ms-seo",
+        "tag": "v0.2.6",
+        "commit": "1a4ba31a1f6f29009d3941e9dd883829ff4e4b8b"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",

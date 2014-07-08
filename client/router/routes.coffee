@@ -1,5 +1,7 @@
 Router.map ->
 
+    metaDescription = "一个meteor炼制的在线教育网站"
+
 
     @route 'home',
         path: '/'
@@ -12,6 +14,15 @@ Router.map ->
             return {
                 latest_courses : Courses.find({}, {sort : {created_at : -1}}, {transform:null})
             }
+        onAfterAction : ->
+            SEO.set
+                title: "首页-learn"
+                meta:
+                  'description': metaDescription
+                og:
+                  'title': "首页-learn"
+                  'description': metaDescription
+
 
     @route 'courses',
         path : '/courses'
@@ -27,6 +38,14 @@ Router.map ->
                 courses : Courses.find({}, {sort : {created_at : -1}}, {transform:null})
                 course_count : Counts.findOne('course-count')?.count
             }
+        onAfterAction : ->
+            SEO.set
+                title: "课程列表-learn"
+                meta:
+                  'description': metaDescription
+                og:
+                  'title': "课程列表-learn"
+                  'description': metaDescription
 
     @route 'courses_by_category',
         path : '/category/:index'
@@ -43,12 +62,25 @@ Router.map ->
                 courses : Courses.find({}, {sort : {created_at : -1}}, {transform:null})
                 course_count : Categories.findOne({index: @params.index})?.course_count()
             }
+        onAfterAction : ->
+            category = Categories.findOne({index:@params.index})
+            SEO.set
+                title: "#{category.name}课程列表-learn"
+                meta:
+                  'description': metaDescription
+                og:
+                  'title': "#{category.name}课程列表-learn"
+                  'description': metaDescription
+
 
     @route 'course_create',
         path : '/tech/courses'
         template : 'course_form'
         onBeforeAction : ->
             AccountsEntry.signInRequired(@)
+        onAfterAction : ->
+            SEO.set
+                title: "创建课程-learn"
     @route 'course_edit',
         path : '/tech/courses/:_id'
         template : 'course_form'
@@ -64,6 +96,9 @@ Router.map ->
             }
         onBeforeAction : ->
             AccountsEntry.signInRequired(@)
+
+            SEO.set
+                title: "编辑课程#{@data().course?.name}-learn"
 
 
     @route 'course_detail',
@@ -90,6 +125,14 @@ Router.map ->
             if Meteor.user()? and @data().course?
                 Meteor.call "studyCreate", @data().course._id
 
+            SEO.set
+                title: "#{@data().course?.name}-learn"
+                meta:
+                  'description': @data().course?.description
+                og:
+                  'title': "#{@data().course?.name}-learn"
+                  'description': @data().course?.description
+
 
     @route 'section_create',
         path : '/tech/courses/:courseId/sections'
@@ -105,6 +148,10 @@ Router.map ->
         onBeforeAction : ->
             AccountsEntry.signInRequired(@)
 
+        onAfterAction : ->
+            SEO.set
+                title: "创建课程章节-learn"
+
     @route 'section_edit',
         path : '/tech/courses/:courseId/sections/:_id'
         template : 'section_form'
@@ -119,6 +166,9 @@ Router.map ->
             }
         onBeforeAction : ->
             AccountsEntry.signInRequired(@)
+        onAfterAction : ->
+            SEO.set
+                title: "编辑课程章节#{@data().section?.title}-learn"
 
     @route 'lecture_create',
         path : '/tech/courses/:courseId/lectures'
@@ -133,6 +183,9 @@ Router.map ->
             }
         onBeforeAction : ->
             AccountsEntry.signInRequired(@)
+        onAfterAction : ->
+            SEO.set
+                title: "创建课时-learn"
 
     @route 'lecture_edit',
         path : '/tech/courses/:courseId/lectures/:_id'
@@ -149,6 +202,9 @@ Router.map ->
             }
         onBeforeAction : ->
             AccountsEntry.signInRequired(@)
+        onAfterAction : ->
+            SEO.set
+                title: "编辑课时#{@data().lecture?.title}-learn"
 
 
     @route 'lecture_detail',
@@ -173,6 +229,14 @@ Router.map ->
             if Meteor.user()? and @data().lecture?
                 Meteor.call "studyLectureCreate", @data().lecture
 
+            SEO.set
+                title: "#{@data().lecture?.title}-learn"
+                meta:
+                  'description': @data().course?.description
+                og:
+                  'title': "#{@data().lecture?.title}-learn"
+                  'description': @data().course?.description
+
     @route 'profile',
         path : '/profile/:_id?'
         onBeforeAction : ->
@@ -187,5 +251,8 @@ Router.map ->
                 user : if @params._id? then Meteor.users.findOne({_id : @params._id}) else Meteor.user()
                 courses : Courses.find({}, {sort:{created_at:-1}}).fetch()
             }
-        onBeforeAction : ->
-            AccountsEntry.signInRequired(@)
+        onAfterAction : ->
+            SEO.set
+                title: "#{@data().user?.profile.name}的个人页面-learn"
+                og:
+                  'title': "#{@data().user?.profile.name}的个人页面-learn"
