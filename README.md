@@ -23,7 +23,7 @@ $ mrt
 ```
 然后访问[http://localhost:3000](http://localhost:3000)
 
-## 一些东西
+## 关于修改的一些东西
 因为mrt了moment包，但是这个包并没有使用中文语言所以，所以如果有需要的话，可以自己修改
 ```bash
 /packages/moment/package.js
@@ -31,6 +31,28 @@ $ mrt
 并且加入
 ```javascript
 api.add_files('lib/moment/lang/zh-cn.js', where)
+```
+
+vender里面的marked.js不是原生的marked.js为了配合prism的语法高亮所以修改了里面的case code时候的return
+```javascript
+return '<pre'
+  +' class="'
+  + this.options.langPrefix
+  + this.token.lang
+  + '"'
+  + '><code'
+  + (this.token.lang
+  ? ' class="'
+  + this.options.langPrefix
+  + this.token.lang
+  + '"'
+  + 'data-language="'
+  + this.token.lang
+  + '"'
+  : '')
+  + '>'
+  + this.token.text
+  + '</code></pre>\n';
 ```
 
 ## 未完成的东西
