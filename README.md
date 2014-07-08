@@ -1,9 +1,9 @@
 # LEARN
 
-## 一个Meteor编写的在线教育网站程序
+## 一个Meteor编写的[在线教育网站](http://learn-app.meteor.com)程序
 
-Learn 是一个[Meteor](http://meteor.com)编写的在线教育网站程序，实时WEB，重要的在于分享以及讨论使用Meteor这个有趣的东西在编写程序遇到的事情
-
+Learn 是一个[Meteor](http://meteor.com)编写的[在线教育网站](http://learn-app.meteor.com)程序，实时WEB，重要的在于分享以及讨论使用Meteor这个有趣的东西在编写程序遇到的事情
+浏览demo地址:[http://learn-app.meteor.com](http://learn-app.meteor.com)
 
 ## 开始
 
