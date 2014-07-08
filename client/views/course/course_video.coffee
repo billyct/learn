@@ -8,3 +8,7 @@ Template.course_video.helpers({
                 video.path = "http://" + AppSetting.qiniu.DOMAIN + "/" + video.path;
             return video
 })
+
+
+Template.course_video.rendered = ->
+    videojs(@find('video'))

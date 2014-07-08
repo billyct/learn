@@ -2,7 +2,7 @@
 
     {{#if $eq course_video.server "local"}}
 
-    <video id="course_video"
+    <video id="course_video" class="video-js vjs-default-skin"
           controls preload="auto" width="100%" height="400px"
           poster="{{poster.path}}">
         <source src="{{course_video.path}}.ogg" type="video/ogg">
@@ -16,7 +16,7 @@
 
     {{#if $eq course_video.server "qiniu"}}
 
-    <video id="course_video"
+    <video id="course_video" class="video-js vjs-default-skin"
           controls preload="auto" width="100%" height="400px"
           poster="{{poster.path}}">
         <source src="{{course_video.path}}?p/1/avthumb/mp4" type="video/mp4">

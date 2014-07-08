@@ -81,15 +81,6 @@ Courses = new Meteor.Collection('courses', {
 });
 
 
-Courses.after.find(function(userId, selector, options, cursor) {
-    // console.log('#####selector######')
-    // console.log(selector);
-    // console.log('########options##########')
-    // console.log(options);
-    // console.log('############cursor##########')
-    // console.log(cursor);
-})
-
 
 Courses.allow({
     insert: function(userId, doc) {

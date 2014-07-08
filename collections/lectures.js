@@ -83,17 +83,10 @@ Lectures.allow({
 
 if (Meteor.isServer) {
 
-    // var toMarkdown = Meteor.require('to-markdown').toMarkdown;
 
     Meteor.methods({
         updateLecture: function(doc, modifier, id) {
-            // if (modifier.$set.introduce !== null) {
-            //     modifier.$set.introduce = toMarkdown(modifier.$set.introduce);
-            // }
-            //
-            // if (modifier.$set.text !== null){
-            //     modifier.$set.text = toMarkdown(modifier.$set.text);
-            // }
+
 
             Lectures.update({_id: id}, modifier, function(err, result) {
                 if (err) {
@@ -104,13 +97,6 @@ if (Meteor.isServer) {
             return id;
         },
         createLecture: function(doc) {
-            // if (doc.introduce !== null) {
-            //     doc.introduce = toMarkdown(doc.introduce);
-            // }
-            //
-            // if (doc.text !== null){
-            //     doc.text = toMarkdown(doc.text);
-            // }
 
             return Lectures.insert(doc, function(err, result) {
                 if (err) {
