@@ -20,6 +20,7 @@ $ git clone https://github.com/billyct/learn.git
 
 ### 步骤 2: 设置
 配置lib/setting.js文件里面的github开放平台和qiniu的存储秘钥等配置
+       
 可以在collections/schemas.coffee文件里，初始化课程类型等数据
 
 ### 步骤 3: 安装
