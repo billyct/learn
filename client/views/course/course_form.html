@@ -63,7 +63,7 @@
                         <div class="form-group">
                             {{> afFieldLabel name="categories" class="col-sm-2"}}
                             <div class="col-sm-10">
-                                {{#with course.categories}}
+                                {{#with categoriesReady}}
                                 {{> afFieldInput name="categories" options=cateogriesOptions template="select2"}}
                                 {{/with}}
 
