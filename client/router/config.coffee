@@ -8,4 +8,4 @@ Router.configure
 
 
 Router.onBeforeAction ->
-    Session.set('url-target', if Router.current().path is '/sign-in' then '/' else Router.current().path)
+    Session.set('url-target', if Router.current().path is '/sign-in' then '/profile' else Router.current().path)

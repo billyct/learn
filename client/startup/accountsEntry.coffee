@@ -2,7 +2,7 @@ Meteor.startup(->
   AccountsEntry.config
     logo: '/images/login_logo.png'
     homeRoute: '/'
-    dashboardRoute: Session.get('url-target')
+    dashboardRoute: if Session.get('url-target')? then Session.get('url-target') else '/profile'
     showSignupCode: false
     language : 'zh-cn'
     passwordSignupFields: 'USERNAME_AND_OPTIONAL_EMAIL'
