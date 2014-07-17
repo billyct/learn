@@ -2,63 +2,68 @@ if Meteor.isServer
     Meteor.startup ->
 
         Meteor.publish 'courses', ->
-            return Courses.find({}, {sort: {created_at:-1}})
+            if arguments[0]? then page = parseInt(arguments[0]) else page = 1
+            if arguments[1]? then limit = parseInt(arguments[1]) else limit = AppSetting.page_limit
 
-        Meteor.publish 'latest_courses', ->
+            skip = limit*(page-1)
+
+            courses_cursor = Courses.find({status: true}, {sort: {created_at : -1}, limit: limit, skip : skip})
+            courses = courses_cursor.fetch()
+
+            uploads_cursor = Uploads.find({_id : {$in : _.pluck(courses, 'image')}})
+
+            return [courses_cursor, uploads_cursor]
+
+        Meteor.publish 'courses-latest', ->
             if Courses.find().count() < 8
-                return Courses.find({}, {limit:4, sort: {created_at: -1}})
+                latest_courses_cursor =  Courses.find({status: true}, {limit:4, sort: {created_at: -1}})
             else
-                return Courses.find({}, {limit:8, sort: {created_at: -1}})
+                latest_courses_cursor = Courses.find({status: true}, {limit:8, sort: {created_at: -1}})
 
-        Meteor.publish 'courses_by_category_index', (index) ->
+            latest_courses = latest_courses_cursor.fetch()
+
+            uploads_cursor = Uploads.find({_id : {$in : _.pluck(latest_courses, 'image')}})
+
+            return [latest_courses_cursor, uploads_cursor]
+
+        Meteor.publish 'courses-by-category', (index) ->
             category = Categories.findOne({index: index})
-            if category?
-                courses = Courses.find({categories : {$all : [category._id]}})
-                return courses
-            return null
+            return [] unless category?
 
-        Meteor.publish 'course-detail', (id) ->
+            if arguments[1]? then page = parseInt(arguments[1]) else page = 1
+            if arguments[2]? then limit = parseInt(arguments[2]) else limit = AppSetting.page_limit
 
-            cursors = []
+            skip = limit*(page-1)
 
-            course_cursor = Courses.find({_id: id})
-            course = Courses.findOne({_id: id})
+            courses_cursor = Courses.find({categories : {$all : [category._id]}, status: true}, {sort: {created_at : -1}, limit:limit, skip:skip})
+            courses = courses_cursor.fetch()
 
-            return cursors unless course?
+            uploads_cursor = Uploads.find({_id : {$in : _.pluck(courses, 'image')}})
 
-            cursors.push course_cursor
-
-            # 课程有关的文件内容
-            uploads = []
-            if course.video?
-                uploads.push course.video
-
-            if course.image?
-                uploads.push course.image
-
-            if uploads?
-                uploads_cursor = Uploads.find({_id : {$in : uploads}})
-                cursors.push uploads_cursor
-
-            # 课程作者
-            if course.author?
-                users_cursor = Meteor.users.find({_id: course.author}, {fields: {profile : 1}})
-                cursors.push users_cursor
+            return [courses_cursor, uploads_cursor]
 
 
-            # 课程相关的章节和课时
+        Meteor.publish 'course-by-index', (index) ->
+            return Courses.find({index: index})
+
+
+
+        Meteor.publish 'course-by-id', (id) ->
+            return Courses.find({_id: id})
+
+
+        Meteor.publish 'course-detail-by-lectureId', (id) ->
+            lecture = Lectures.findOne({_id : id})
+            section = Sections.findOne({_id : lecture?.section})
+            course = Courses.findOne({_id : section.course})
+
+            course_cursor = Courses.find({_id : section.course})
+
             sections_cursor = Sections.find({course: course._id})
             sections = sections_cursor.fetch()
 
-            return cursors unless sections?
-
-            cursors.push sections_cursor
+            return [course_cursor] unless sections?
 
             lectures_cursor = Lectures.find({section: {$in: _.pluck(sections, '_id')}}, {fields: {video: 0, text: 0, audio: 0}})
 
-            cursors.push lectures_cursor
-
-            return cursors
-
-        Meteor.publish 'author' , (id) ->
-            Meteor.users.find({_id: id}, {fields: {profile : 1}})
+            return [sections_cursor, course_cursor, lectures_cursor]

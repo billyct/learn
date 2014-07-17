@@ -3,6 +3,8 @@
         {{#unless isAdmin}}
         <div class="line line-dashed"></div>
         {{/unless}}
+
+
         <ul class="list_1">
             <li>
                 <a href="">个人设置</a>
@@ -15,7 +17,16 @@
             <li>
                 <a href="">消息设置</a>
             </li>
+
+            {{#if isAdmin}}
+
+            <li>
+                <a href="">课程类别管理</a>
+            </li>
+            {{/if}}
         </ul>
+
+
         {{#if isAdmin}}
         <a href='{{pathFor "course_create"}}' class="button_medium_outline btn-block">创建课程<i class="icon-plus pull-right"></i></a>
         {{else}}

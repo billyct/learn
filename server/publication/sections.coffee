@@ -1,9 +1,9 @@
 if Meteor.isServer
     Meteor.startup ->
-        Meteor.publish 'sections', ->
-            Sections.find({})
 
-        Meteor.publish 'sections_by_course_index', (index) ->
-            c = Courses.findOne({index: index})
-            sections = Sections.find({course: c._id})
-            return sections
+        Meteor.publish 'sections-by-courseId', (id) ->
+            return Sections.find({course: id})
+
+        Meteor.publish 'sections-by-courseIndex', (index) ->
+            course = Courses.findOne({index: index})
+            return Sections.find({course:course._id})

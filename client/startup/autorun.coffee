@@ -5,3 +5,6 @@ Deps.autorun ->
         categories = Categories.find({}).fetch()
         for category in categories
             Meteor.subscribe 'course-count-by-category', category._id
+
+    if Meteor.user()
+        Meteor.subscribe 'studies-by-userId', Meteor.userId()

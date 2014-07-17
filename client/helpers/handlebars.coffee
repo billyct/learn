@@ -3,7 +3,7 @@ UI.registerHelper 'fromNow', (date) ->
 
 UI.registerHelper '$eq', (a, b) ->
     return a is b
-
+    
 UI.registerHelper 'dotdotdot60', (str) ->
     if str.length > 60
         return str.substring(0, 60) + '...'

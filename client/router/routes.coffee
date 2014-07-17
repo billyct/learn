@@ -8,7 +8,7 @@ Router.map ->
         template : 'home'
         waitOn : ->
             return [
-                Meteor.subscribe 'page-home'
+                Meteor.subscribe 'courses-latest'
             ]
         data : ->
             return {
@@ -31,7 +31,7 @@ Router.map ->
             limit = if @params.limit? then parseInt @params.limit else AppSetting.page_limit
 
             return [
-                Meteor.subscribe 'page-courses', page, limit
+                Meteor.subscribe 'courses', page, limit
             ]
         data : ->
             return {
@@ -55,7 +55,7 @@ Router.map ->
             limit = if @params.limit? then parseInt @params.limit else AppSetting.page_limit
 
             return [
-                Meteor.subscribe 'page-courses-by-category', @params.index, page, limit
+                Meteor.subscribe 'courses-by-category', @params.index, page, limit
             ]
         data : ->
             return {
@@ -76,18 +76,28 @@ Router.map ->
     @route 'course_create',
         path : '/tech/courses'
         template : 'course_form'
+        waitOn : ->
+            return [
+                Meteor.subscribe 'user', Meteor.userId()
+            ]
+
         onBeforeAction : ->
             AccountsEntry.signInRequired(@)
+
         onAfterAction : ->
             SEO.set
                 title: "创建课程-learn"
+
+
     @route 'course_edit',
         path : '/tech/courses/:_id'
         template : 'course_form'
         waitOn : ->
             return [
-                Meteor.subscribe 'course-detail' , @params._id
-                Meteor.subscribe 'course-edit-menu', @params._id
+                Meteor.subscribe 'course-by-id' , @params._id
+                Meteor.subscribe 'sections-by-courseId', @params._id
+                Meteor.subscribe 'lectures-by-courseId', @params._id
+                Meteor.subscribe 'uploads-by-courseId', @params._id
             ]
 
         data : ->
@@ -106,8 +116,11 @@ Router.map ->
 
         waitOn : ->
             return [
-                Meteor.subscribe 'page-course-detail', @params.index
-
+                Meteor.subscribe 'course-by-index', @params.index
+                Meteor.subscribe 'sections-by-courseIndex', @params.index
+                Meteor.subscribe 'lectures-by-courseIndex', @params.index
+                Meteor.subscribe 'uploads-by-courseIndex', @params.index
+                Meteor.subscribe 'author-by-courseIndex', @params.index
             ]
 
         data : ->
@@ -115,11 +128,6 @@ Router.map ->
                 course : Courses.findOne({index : @params.index})
                 study : if Meteor.userId()? then Studies.findOne() else {}
             }
-
-
-        onBeforeAction : ->
-            if @data().course?
-                if Meteor.userId()? then Meteor.subscribe 'course-study', @data().course._id, Meteor.userId()
 
         onAfterAction : ->
             if Meteor.user()? and @data().course?
@@ -139,7 +147,9 @@ Router.map ->
         template : 'section_form'
         waitOn : ->
             return [
-                Meteor.subscribe 'course-edit-menu', @params.courseId
+                Meteor.subscribe 'course-by-id' , @params.courseId
+                Meteor.subscribe 'sections-by-courseId', @params.courseId
+                Meteor.subscribe 'lectures-by-courseId', @params.courseId
             ]
         data : ->
             return {
@@ -157,7 +167,9 @@ Router.map ->
         template : 'section_form'
         waitOn : ->
             return [
-                Meteor.subscribe 'course-edit-menu', @params.courseId
+                Meteor.subscribe 'course-by-id' , @params.courseId
+                Meteor.subscribe 'sections-by-courseId', @params.courseId
+                Meteor.subscribe 'lectures-by-courseId', @params.courseId
             ]
         data: ->
             return {
@@ -175,7 +187,9 @@ Router.map ->
         template : 'lecture_form'
         waitOn : ->
             return [
-                Meteor.subscribe 'course-edit-menu', @params.courseId
+                Meteor.subscribe 'course-by-id' , @params.courseId
+                Meteor.subscribe 'sections-by-courseId', @params.courseId
+                Meteor.subscribe 'lectures-by-courseId', @params.courseId
             ]
         data: ->
             return {
@@ -192,8 +206,12 @@ Router.map ->
         template : 'lecture_form'
         waitOn : ->
             return [
-                Meteor.subscribe 'course-edit-menu', @params.courseId
-                Meteor.subscribe 'page-lecture-detail', @params._id
+                Meteor.subscribe 'course-by-id' , @params.courseId
+                Meteor.subscribe 'sections-by-courseId', @params.courseId
+                Meteor.subscribe 'lectures-by-courseId', @params.courseId
+
+                Meteor.subscribe 'lecture-by-id', @params._id
+                Meteor.subscribe 'uploads-by-lectureId', @params._id
             ]
         data: ->
             return {
@@ -211,8 +229,10 @@ Router.map ->
         path : '/lectures/:_id'
         waitOn : ->
             return [
-                Meteor.subscribe 'page-lecture-detail', @params._id
-                Meteor.subscribe 'page-lecture-detail-box', @params._id
+                Meteor.subscribe 'course-detail-by-lectureId' , @params._id
+
+                Meteor.subscribe 'lecture-by-id', @params._id
+                Meteor.subscribe 'uploads-by-lectureId', @params._id
             ]
         data : ->
             return {
@@ -222,8 +242,6 @@ Router.map ->
 
         onBeforeAction : ->
             AccountsEntry.signInRequired(@)
-            if @data().course?
-                if Meteor.userId()? then Meteor.subscribe 'course-study', @data().course._id, Meteor.userId()
 
         onAfterAction : ->
             if Meteor.user()? and @data().lecture?
@@ -244,7 +262,7 @@ Router.map ->
         waitOn : ->
 
             return [
-                if @params._id? then Meteor.subscribe 'page-profile', @params._id else Meteor.subscribe 'page-profile', Meteor.userId()
+                if @params._id? then Meteor.subscribe 'profile', @params._id else Meteor.subscribe 'profile', Meteor.userId()
             ]
         data : ->
             return {
@@ -256,3 +274,17 @@ Router.map ->
                 title: "#{@data().user?.profile.name}的个人页面-learn"
                 og:
                   'title': "#{@data().user?.profile.name}的个人页面-learn"
+
+    @route 'categories_management',
+        path : '/management/categories'
+        onBeforeAction : ->
+            AccountsEntry.signInRequired(@)
+        data : ->
+            return {
+                categories : Categories.find().fetch()
+            }
+        onAfterAction : ->
+            SEO.set
+                title: "课程类别管理-learn"
+                og:
+                  'title': "课程类别管理-learn"

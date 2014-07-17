@@ -60,7 +60,6 @@ Accounts.onCreateUser (options, user) ->
                         headers : {"User-Agent": "Meteor/1.0"}
         })
         if result.error
-            console.log result
             throw result.error
 
         profile = _.pick(result.data,
@@ -73,12 +72,11 @@ Accounts.onCreateUser (options, user) ->
         })
 
         if emailsResult.error
-            console.log emailsResult
             throw emailsResult.error
 
 
-        user.username = profile.name
-        user.emails = emailsResult.data
+        # user.username = profile.name
+        # user.emails = emailsResult.data
         user.profile = profileConvert profile, 'github'
 
     # if user.services.weibo

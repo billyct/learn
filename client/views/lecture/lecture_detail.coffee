@@ -7,11 +7,6 @@ marked.setOptions({
 })
 
 
-
-
-
-
-
 Template.lecture_detail.lecture_text = ->
     if @lecture?.text?
         return marked(@lecture.text)

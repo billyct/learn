@@ -13,9 +13,9 @@ Meteor.startup ->
         status :
             type : Boolean
             label : '课程发布状态'
-        price :
-            type : Number
-            label : '价格'
+        # price :
+        #     type : Number
+        #     label : '价格'
         best_selling :
             type : Boolean
             label: '热卖'

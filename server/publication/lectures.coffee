@@ -1,15 +1,13 @@
 if Meteor.isServer
     Meteor.startup ->
-        Meteor.publish 'lectures', ->
-            Lectures.find({})
 
-        Meteor.publish 'lectures_by_course_index', (index) ->
-            c = Courses.findOne({index: index})
-            sections = _.pluck Sections.find({course: c._id}).fetch(), '_id'
-            return Lectures.find({section : {$in : sections}})
-
-        Meteor.publish 'lecture_detail', (_id) ->
-            return Lectures.findOne({_id : _id})
+        Meteor.publish 'lecture-by-id', (id) ->
+            return Lectures.find({_id : id})
 
 
-        
+        Meteor.publish 'lectures-by-courseId', (id) ->
+            return Lectures.find({course: id}, {fields: {video: 0, text: 0, audio: 0}})
+
+        Meteor.publish 'lectures-by-courseIndex', (index) ->
+            course = Courses.findOne({index: index})
+            return Lectures.find({course: course._id}, {fields: {video: 0, text: 0, audio: 0}})

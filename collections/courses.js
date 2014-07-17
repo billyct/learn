@@ -10,20 +10,9 @@ Course.prototype = {
             return _.extend(doc, {index: index + 1});
         });
     },
-    //
-    // lectures_by_section : function (section) {
-    //
-    //     if(typeof(section) === "object") {
-    //         section = section._id;
-    //     }
-    //
-    //     return Lectures.find({section : section}).fetch();
-    // },
-    //
 
     poster : function() {
         var image = Uploads.findOne({_id: this.image});
-
         if (!_.isUndefined(image) && image.server === "qiniu") {
             image.path = "http://" + AppSetting.qiniu.DOMAIN + "/" + image.path;
         }
@@ -36,13 +25,13 @@ Course.prototype = {
     },
 
     lectures : function() {
-        return Lectures.find({section : {$in: _.pluck(this.sections(),'_id')}}, {sort:{order:1}}).fetch();
+        return Lectures.find({course:this._id},{sort: {order: 1}}).fetch();
     },
 
     lecture_count : function() {
-        return this.lectures().length;
+        return Lectures.find({course: this._id}).count();
     },
-
+    
     time_count : function() {
         var times = _.pluck(this.lectures(), 'time');
         var timeTotal = 0;

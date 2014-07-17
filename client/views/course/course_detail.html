@@ -94,7 +94,7 @@
                 {{#if $eq course.teacher._id currentUser._id}}
                 <a href='{{pathFor "course_edit" _id=course._id}}' class=" button_fullwidth-3">编辑课程信息</a>
                 {{else}}
-                <a href="#" class=" button_fullwidth-3">开始学习</a>
+                <a href="{{#if lectureId_to_learn}}{{pathFor 'lecture_detail' _id=lectureId_to_learn}}{{/if}}" class=" button_fullwidth-3">开始学习</a>
                 {{/if}}
 
 

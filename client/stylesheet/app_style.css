@@ -18,7 +18,7 @@ a#hinted {
 #preview img {
     width : 300px;
     height : 225px;
-    border : 1px solid #ececec;
+    /*border : 1px solid #ececec;*/
 }
 
 #preview div#progress {
