@@ -11,7 +11,7 @@
             <div class="widget_nav_menu">
                 <ul class="social_team">
                     {{#if user.profile.github}}
-                    <li><a href="{{user.profile.github_url}}"><i class="icon-github"></i></a></li>
+                    <li><a href="{{user.profile.github}}"><i class="icon-github"></i></a></li>
                     {{/if}}
                 </ul>
                 <div class="phone-info">
@@ -33,10 +33,11 @@
     <h4 class="p-title">
         {{user.profile.name}}
     </h4>
+    <p>{{user.profile.introduce}}</p>
 
     <ul class="social_team">
         {{#if user.profile.github}}
-        <li><a href="{{user.profile.github_url}}"><i class="icon-github"></i></a></li>
+        <li><a href="{{user.profile.github}}"><i class="icon-github"></i></a></li>
         {{/if}}
     </ul>
 

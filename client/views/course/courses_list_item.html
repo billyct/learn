@@ -7,7 +7,7 @@
         <div class="photo">
             <a href="{{pathFor 'course_detail' index=index}}">
                 {{#if poster}}
-                <img src="{{poster.path}}" alt="{{name}}" />
+                <img src="{{poster.path}}-thumb" alt="{{name}}" />
                 {{else}}
                 <img data-src="holder.js/260x195/vine/text:{{name}}" alt="{{name}}" />
                 {{/if}}

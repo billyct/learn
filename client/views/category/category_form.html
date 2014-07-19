@@ -1,0 +1,27 @@
+<template name="category_form">
+
+
+    {{#autoForm doc=category collection="Categories" id="categoryForm" type=method.type meteormethod=method.call }}
+
+    <div class="modal fade in" id="category-form-modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title">{{#if category.name}}编辑{{else}}创建{{/if}}课程类别</h4>
+          </div>
+          <div class="modal-body">
+              {{> afQuickField name='name'}}
+              {{> afQuickField name='index'}}
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="button_medium_outline" data-dismiss="modal">取消</button>
+            <button type="submit" class="button_medium" ata-dismiss="modal">保存</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{/autoForm}}
+</template>

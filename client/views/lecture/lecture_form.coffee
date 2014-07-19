@@ -31,8 +31,8 @@ Template.lecture_form.helpers({
             }
         if Router.current().route.name is 'lecture_edit'
             return {
-                type : 'method'
-                call : 'updateLecture'
+                type : 'update'
+                call : null
             }
 
     textReady : ->

@@ -1,3 +1,67 @@
 <template name="categories_management">
-    
+    <section id="main_content">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-4">
+                    {{> profile_left_side user=user}}
+                </div>
+
+                <div class="col-md-8">
+                    <h3>课程类别管理</h3>
+                    <p>
+                        你不能删除拥有课程的课程类别
+
+                    </p>
+                    <p>
+                        <a href="#" class="btn btn-default btn-rounded" id="button-create-category">
+                            <i class="icon-plus"></i> 添加课程类别
+                        </a>
+                    </p>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>名称</th>
+                                    <th>别名</th>
+                                    <th>拥有的课程数量</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each categories}}
+                                <tr>
+                                    <td>{{name}}</td>
+                                    <td>{{index}}</td>
+                                    <td><strong>{{course_count}}</strong></td>
+                                    <td>
+                                        <a href="#" data-cid="{{_id}}" class="btn btn-default btn-icon btn-rounded" data-toggle="tooltip" title="编辑" id="button-edit-category">
+                                            <i class="icon-pencil"></i>
+                                        </a>
+                                        {{#if $eq course_count 0}}
+                                        <a href="#" data-cid="{{_id}}" class="btn btn-default btn-icon btn-rounded" data-toggle="tooltip" title="删除" id="button-remove-category">
+                                            <i class="icon-cancel"></i>
+                                        </a>
+                                        {{/if}}
+                                    </td>
+                                </tr>
+                                {{/each}}
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    {{> category_form}}
+
+
+
+
 </template>

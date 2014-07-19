@@ -1,0 +1,89 @@
+<template name="profile_setting">
+    <section id="main_content">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-4">
+                    {{> profile_left_side user=user}}
+                </div>
+
+                <div class="col-md-8">
+                    <div class=" box_style_2">
+            			<span class="tape"></span>
+            			<div class="row">
+            				<div class="col-md-12">
+            					<h3>用户设置</h3>
+            				</div>
+            			</div>
+
+            			<form method="post">
+            				<div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <span class="input-icon"><i class="icon-user"></i></span>
+                                        <input type="text" class="form-control style_2" name="name" placeholder="昵称" value="{{user.profile.name}}">
+                                    </div>
+                                </div>
+            				</div>
+
+            				<div class="row">
+            					<div class="col-sm-12">
+                                    <div class="email-list">
+                                        {{#each user.emails}}
+                                        <p>
+                                            “{{#if address}}{{address}}{{else}}{{email}}{{/if}}”
+                                            <a href="#" class="btn btn-sm btn-icon btn-rounded btn-dark"><i class="icon-minus"></i></a>
+                                            {{#unless verified}}
+                                            <a href="#" class="btn btn-default btn-rounded">验证邮箱</a>
+                                            {{/unless}}
+                                        </p>
+                                        {{/each}}
+                                        <div class="row">
+
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <input type="email" name="email" class="form-control style_2" placeholder="Email">
+                                                    <span class="input-icon"><i class="icon-email"></i></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-2">
+                                                <button class="btn btn-default"><i class="icon-plus"></i> 添加邮箱</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+            					</div>
+
+            				</div>
+            				<div class="row">
+            					<div class="col-md-12">
+            						<div class="form-group">
+            							<textarea rows="5" name="introduce" class="form-control" placeholder="个人介绍">{{user.profile.introduce}}</textarea>
+            						</div>
+            					</div>
+            				</div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p>
+                                        {{#if user.profile.github}}
+                                        <a href="{{user.profile.github}}" class="btn btn-default btn-icon btn-rounded active"><i class="icon-github"></i></a>
+                                        {{else}}
+                                        <a href="#" class="btn btn-default btn-rounded"><i class="icon-github"></i> 未绑定</a>
+                                        {{/if}}
+                                    </p>
+                                </div>
+                            </div>
+            				<div class="row">
+            					<div class="col-md-12">
+            						<input type="submit" value="保存" class="button_medium" id="button-save">
+            					</div>
+            				</div>
+            			</form>
+            		</div>
+                </div>
+            </div>
+        </div>
+    </section>
+</template>

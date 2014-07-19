@@ -112,12 +112,12 @@
                         <a href='{{pathFor "profile" _id=course.teacher._id}}'><h5>{{course.teacher.profile.name}}</h5></a>
                         <ul class="social_team">
                             {{#if course.teacher.profile.github}}
-                            <li><a href="{{course.teacher.profile.github_url}}"><i class="icon-github"></i></a></li>
+                            <li><a href="{{course.teacher.profile.github}}"><i class="icon-github"></i></a></li>
                             {{/if}}
                         </ul>
                     </div>
 
-                    <p>Java课程研究兼总部教务领先者 ，任职项目经理、技术总监、系统架构师等职务。</p>
+                    <p>{{course.teacher.profile.introduce}}</p>
 
 
                     <div class="line line-dashed"></div>

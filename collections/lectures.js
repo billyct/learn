@@ -109,7 +109,7 @@ if (Meteor.isServer) {
 
             count = Lectures.findOne({section: section._id}, {sort:{order: 1}}).order;
             _.each(section.lectures, function(lecture, key) {
-                console.log(count);
+
                 Lectures.update({_id : lecture._id}, {$set : {order: count, section: section._id}}, function(err, result){
                     if (err) {
                         throw new Meteor.Error(404, "课时排序失败！");

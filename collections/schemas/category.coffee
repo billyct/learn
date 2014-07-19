@@ -7,15 +7,12 @@ Meteor.startup ->
         index :
             type : String
             label : '分类别名'
-            unique: true
         order :
             type : Number
             label : '分类排序'
-            min : 0
-        courses :
-            type : [String]
-            label : '分类课程'
+            min : 1
             optional : true
+
         created_at :
             type: Date
             autoValue : ->

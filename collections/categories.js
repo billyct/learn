@@ -18,3 +18,49 @@ Categories = new Meteor.Collection('categories', {
         return new Category(document);
     }
 });
+
+Categories.allow({
+    insert: function(userId, doc) {
+
+        if(isAdminById(userId)) {
+            return true;
+        }
+        return false;
+    },
+    update : function(userId, doc, fieldNames, modifier) {
+        if(isAdminById(userId)) {
+            return true;
+        }
+        return false;
+    },
+    remove : function(userId, doc) {
+        if(isAdminById(userId)) {
+            var c = Counts.findOne(doc._id);
+            if(!_.isUndefined(c) && c.count > 0)
+                return true;
+        }
+        return false;
+    }
+});
+
+
+Meteor.methods({
+    removeCategory : function(id) {
+        Categories.remove({_id : id}, function(err, result) {
+            if (err) {
+                throw new Meteor.Error(404, "删除课程类别失败");
+            }
+        });
+        return id;
+    },
+
+    createCategory : function(doc) {
+
+        return Categories.insert(doc, function(err, result){
+            if (err) {
+                throw new Meteor.Error(404, "创建课程类别失败");
+            }
+            return result;
+        })
+    }
+});

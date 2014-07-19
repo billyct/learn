@@ -31,7 +31,7 @@ Course.prototype = {
     lecture_count : function() {
         return Lectures.find({course: this._id}).count();
     },
-    
+
     time_count : function() {
         var times = _.pluck(this.lectures(), 'time');
         var timeTotal = 0;
@@ -107,5 +107,27 @@ Meteor.methods({
                 return result;
             }
         });
+    },
+    removeCourse : function(id) {
+        Courses.remove({_id: id}, function(err, result) {
+            if(err) {
+                throw new Meteor.Error(404, "删除课程数据失败！");
+            }
+        });
+
+        Sections.remove({course: id}, function(err, result) {
+            if(err) {
+                throw new Meteor.Error(404, "删除课程相关的章节数据失败！");
+            }
+        });
+        
+        Lectures.remove({course: id}, function(err, result) {
+            if(err) {
+                throw new Meteor.Error(404, "删除课程相关的课时数据失败！");
+            }
+        });
+
+        return id;
+
     }
 });

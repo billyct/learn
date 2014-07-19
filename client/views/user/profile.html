@@ -21,7 +21,16 @@
                             <div class="cbp_tmlabel">
                                 <div class="pull-right">
                                     {{#if $eq ../user._id currentUser._id}}
-                                    <a href='{{pathFor "course_edit" _id=_id}}' class="btn btn-default r-n">编辑</a>
+                                    <div class="btn-group">
+                                        <a href='{{pathFor "course_edit" _id=_id}}' class="btn btn-default btn-icon" data-toggle="tooltip" title="编辑">
+                                            <i class="icon-edit"></i>
+                                        </a>
+                                        <a href='#' id="button-remove-course" data-cid="{{_id}}" class="btn btn-default btn-icon" data-toggle="tooltip" title="删除">
+                                            <i class="icon-cancel-circled2"></i>
+                                        </a>
+
+                                    </div>
+
                                     {{/if}}
                                 </div>
                                 <h2>

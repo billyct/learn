@@ -32,8 +32,7 @@ profileConvert = (profile, type) ->
         profileConverted = {
             name : profile.name
             avatar : profile.avatar_url
-            github : true
-            github_url : "http://github.com/"+profile.name
+            github : "http://github.com/"+profile.name
         }
 
     return profileConverted
@@ -75,8 +74,8 @@ Accounts.onCreateUser (options, user) ->
             throw emailsResult.error
 
 
-        # user.username = profile.name
-        # user.emails = emailsResult.data
+        user.username = profile.name
+        user.emails = _.pick(emailsResult.data,"email", "verified")
         user.profile = profileConvert profile, 'github'
 
     # if user.services.weibo

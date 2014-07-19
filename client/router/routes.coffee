@@ -65,11 +65,11 @@ Router.map ->
         onAfterAction : ->
             category = Categories.findOne({index:@params.index})
             SEO.set
-                title: "#{category.name}课程列表-learn"
+                title: "#{category?.name}课程列表-learn"
                 meta:
                   'description': metaDescription
                 og:
-                  'title': "#{category.name}课程列表-learn"
+                  'title': "#{category?.name}课程列表-learn"
                   'description': metaDescription
 
 
@@ -255,6 +255,25 @@ Router.map ->
                   'title': "#{@data().lecture?.title}-learn"
                   'description': @data().course?.description
 
+
+    @route 'profile_setting',
+        path : '/profile/setting'
+        onBeforeAction : ->
+            AccountsEntry.signInRequired(@)
+        waitOn : ->
+            return [
+                Meteor.subscribe 'user', Meteor.userId()
+            ]
+        data : ->
+            return {
+                user : Meteor.users.findOne()
+            }
+        onAfterAction : ->
+            SEO.set
+                title: "#{@data().user?.profile.name}的个人设置-learn"
+                og:
+                  'title': "#{@data().user?.profile.name}的个人设置-learn"
+
     @route 'profile',
         path : '/profile/:_id?'
         onBeforeAction : ->
@@ -275,13 +294,20 @@ Router.map ->
                 og:
                   'title': "#{@data().user?.profile.name}的个人页面-learn"
 
+
+
     @route 'categories_management',
         path : '/management/categories'
         onBeforeAction : ->
             AccountsEntry.signInRequired(@)
+        waitOn : ->
+            return [
+                Meteor.subscribe 'user', Meteor.userId()
+            ]
         data : ->
             return {
-                categories : Categories.find().fetch()
+                categories : Categories.find({}, {sort:{order: 1}}).fetch()
+                user : Meteor.users.findOne()
             }
         onAfterAction : ->
             SEO.set
