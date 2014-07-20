@@ -27,9 +27,9 @@
             <div class="clearfix text-center">
                 <a href='{{pathFor "lecture_detail" _id=lecture.pre_lecture._id}}' class="pull-left button_medium_outline"> <i class="icon-left-open"></i></a>
                 {{#if lecture.is_completed}}
-                <a href="#" id="mark-as-complete" class="button_medium_outline" disabled>已经完成</a>
+                <a href="#" id="mark-as-complete" class="button_medium_outline" disabled>{{t9n "completed"}}</a>
                 {{else}}
-                <a href="#" id="mark-as-complete" class="button_medium_outline">标记为已经完成</a>
+                <a href="#" id="mark-as-complete" class="button_medium_outline">{{t9n "markAsCompleted"}}</a>
                 {{/if}}
                 <a href='{{pathFor "lecture_detail" _id=lecture.next_lecture._id}}' class="pull-right button_medium_outline"><i class="icon-right-open"></i></a></div>
             </div><!-- End col-md-8  -->

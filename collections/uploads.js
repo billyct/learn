@@ -143,7 +143,7 @@ if(Meteor.isServer) {
                 server : server
             }, function(err, result) {
                 if(err) {
-                    throw new Meteor.Error(404, "存储图片失败！");
+                    throw new Meteor.Error(404, t9n('err.uploadImage'));
                 }
                 return result;
             })
@@ -158,7 +158,7 @@ if(Meteor.isServer) {
                 persistentId : persistentId //转码标记
             }, function(err, result) {
                 if(err) {
-                    throw new Meteor.Error(404, "存储视频失败！");
+                    throw new Meteor.Error(404, t9n('err.uploadVideo'));
                 }
                 return result;
             })
@@ -172,7 +172,7 @@ if(Meteor.isServer) {
                 server : server
             }, function(err, result) {
                 if(err) {
-                    throw new Meteor.Error(404, "存储文件失败！");
+                    throw new Meteor.Error(404, t9n('err.uploadFile'));
                 }
                 return result;
             })

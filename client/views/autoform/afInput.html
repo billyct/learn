@@ -9,7 +9,7 @@
             <div class="col-sm-3">
                 <a class="btn btn-default btn-sm" id="pickfiles" href="#" >
                     <i class="icon-plus"></i>
-                    <sapn>选择图片</sapn>
+                    <sapn>{{t9n "file.selectImage"}}</sapn>
                 </a>
                 <div id="help" class="alert alert-info m-t-md alert-sm" style="display:none;"></div>
             </div>
@@ -38,17 +38,17 @@
             <div class="col-sm-3">
                 <a class="btn btn-default btn-sm" id="pickfiles" href="#" >
                     <i class="icon-plus"></i>
-                    <sapn>选择{{#if $eq atts.dataType "video"}}视频{{else}}音频{{/if}}</sapn>
+                    <sapn>{{#if $eq atts.dataType "video"}}{{t9n "file.selectVideo"}}{{else}}{{t9n "file.selectAudio"}}{{/if}}</sapn>
                 </a>
 
                 <div class="btn-group" style="display:none;">
                     <a id="button-upload" class="btn btn-info btn-sm m-t-sm" href="#">
                         <i class="icon-upload"></i>
-                        <sapn>上传</sapn>
+                        <sapn>{{t9n "upload"}}</sapn>
                     </a>
                     <a id="button-cancel" class="btn btn-danger btn-sm m-t-sm" href="#" style="display:none;">
                         <i class="icon-cancel"></i>
-                        <sapn>取消</sapn>
+                        <sapn>{{t9n "cancel"}}</sapn>
                     </a>
                 </div>
                 <div id="help" class="alert alert-info m-t-md alert-sm" style="display:none;"></div>
@@ -57,7 +57,7 @@
                 <div id="preview">
                     <span>{{media.path}}</span>
                     {{#if media.persistentId}}
-                    <a class="label label-info" target="_blank" href="http://api.qiniu.com/status/get/prefop?id={{media.persistentId}}">查看转码情况</a>
+                    <a class="label label-info" target="_blank" href="http://api.qiniu.com/status/get/prefop?id={{media.persistentId}}">{{t9n "file.checkFopStatus"}}</a>
                     {{/if}}
                     <div class="progress m-t-sm" style="display:none;">
                         <div class="progress-bar progress-bar-info" id="progressbar" style="width: 0%">

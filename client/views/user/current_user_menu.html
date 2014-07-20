@@ -7,14 +7,14 @@
 
         <ul class="list_1">
             <li>
-                <a href="{{pathFor 'profile'}}">主页</a>
+                <a href="{{pathFor 'profile'}}">{{t9n "dashboard"}}</a>
             </li>
             <li>
-                <a href="{{pathFor 'profile_setting'}}">设置</a>
+                <a href="{{pathFor 'profile_setting'}}">{{t9n "setting"}}</a>
             </li>
 
             <li>
-                <a href="">修改密码</a>
+                <a href="">{{t9n "profile.changePassword"}}</a>
             </li>
 
 
@@ -22,17 +22,17 @@
 
 
         {{#if isAdmin}}
-        <a href='{{pathFor "course_create"}}' class="button_medium_outline btn-block">创建课程<i class="icon-plus pull-right"></i></a>
+        <a href='{{pathFor "course_create"}}' class="button_medium_outline btn-block">{{t9n "course.create"}}<i class="icon-plus pull-right"></i></a>
         {{else}}
-        <a href='{{pathFor "course_create"}}' class="button_medium_outline">创建课程</a>
+        <a href='{{pathFor "course_create"}}' class="button_medium_outline">{{t9n "course.create"}}</a>
         {{/if}}
 
         {{#if isAdmin}}
         <div class="box_style_1">
-            <h4>管理员菜单</h4>
+            <h4>{{t9n "profile.adminMenu"}}</h4>
             <ul class="list_1">
                 <li>
-                    <a href="{{pathFor 'categories_management'}}">课程类别管理</a>
+                    <a href="{{pathFor 'categories_management'}}">{{t9n "category.management"}}</a>
                 </li>
             </ul>
         </div>

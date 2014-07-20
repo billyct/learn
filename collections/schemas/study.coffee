@@ -2,22 +2,22 @@ Meteor.startup ->
     @LectureStudySchema = new SimpleSchema({
         lecture :
             type : String
-            label : "课时"
+            label : "#{t9n('lecture')}"
         complete :
             type : Boolean
-            label : "是否已经完成了该课时"
+            label : "#{t9n('study.completed')}"
     })
 
     @StudySchema = new SimpleSchema({
         course:
             type : String
-            label : "课程"
+            label : "#{t9n('course')}"
         user :
             type : String
-            label : "学习该课程的用户"
+            label : "#{t9n('study.user')}"
         lectures :
             type : [@LectureStudySchema]
-            label : "课程学习记录"
+            label : "#{t9n('study.lectures')}"
             optional : true
         created_at :
             type: Date

@@ -6,11 +6,11 @@
                     <div id="mobnav-btn"></div>
                     <ul class="sf-menu">
                         <li>
-                            <a href="{{pathFor 'home'}}">首页</a>
+                            <a href="{{pathFor 'home'}}">{{t9n "home"}}</a>
 
                         </li>
                         <li>
-                            <a href="{{pathFor 'courses'}}">课程</a>
+                            <a href="{{pathFor 'courses'}}">{{t9n "courses"}}</a>
                             <div class="mobnav-subarrow"></div>
                             <ul>
                                 {{#each categories}}
@@ -27,7 +27,7 @@
                     <div class="col-md-4 pull-right hidden-sm hidden-xs">
                         <div id="sb-search" class="sb-search">
                             <form>
-                                <input class="sb-search-input" placeholder="搜索课程" type="text" value="" name="search" id="search">
+                                <input class="sb-search-input" placeholder="{{t9n 'course.search'}}" type="text" value="" name="search" id="search">
                                 <input class="sb-search-submit" type="submit" value="">
                                 <span class="sb-icon-search"></span>
                             </form>

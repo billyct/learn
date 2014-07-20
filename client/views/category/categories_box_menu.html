@@ -1,8 +1,8 @@
 <template name="categories_box_menu">
     <div class="box_style_1">
-        <h4>分类</h4>
+        <h4>{{t9n "category"}}</h4>
         <ul class="submenu-col">
-            <li><a href="{{pathFor 'courses'}}" class="{{active 'courses'}}">所有课程</a></li>
+            <li><a href="{{pathFor 'courses'}}" class="{{active 'courses'}}">{{t9n "category.all"}}</a></li>
             {{#each categories}}
             <li>
                 <a href="{{pathFor 'courses_by_category' index=index}}"

@@ -90,7 +90,7 @@ if (Meteor.isServer) {
 
             Lectures.update({_id: id}, modifier, function(err, result) {
                 if (err) {
-                    throw new Meteor.Error(404, "更新课时失败！");
+                    throw new Meteor.Error(404, t9n('err.editLecture'));
                 }
             });
 
@@ -100,7 +100,7 @@ if (Meteor.isServer) {
 
             return Lectures.insert(doc, function(err, result) {
                 if (err) {
-                    throw new Meteor.Error(404, "创建课时失败！");
+                    throw new Meteor.Error(404, t9n('createLecture'));
                 }
                 return result;
             })
@@ -112,7 +112,7 @@ if (Meteor.isServer) {
 
                 Lectures.update({_id : lecture._id}, {$set : {order: count, section: section._id}}, function(err, result){
                     if (err) {
-                        throw new Meteor.Error(404, "课时排序失败！");
+                        throw new Meteor.Error(404, t9n('sortLecture'));
                     }
                 });
                 count++;
@@ -127,7 +127,7 @@ if (Meteor.isServer) {
                 _.each(section.lectures, function(lecture) {
                     Lectures.update({_id : lecture._id}, {$set : {order: count, section: section._id}}, function(err, result) {
                         if (err) {
-                            throw new Meteor.Error(404, "课时排序失败！");
+                            throw new Meteor.Error(404, t9n('sortLecture'));
                         }
                         count++;
                     });

@@ -20,7 +20,7 @@ Template.afInput_fileimage.rendered = ->
             max_file_size: '100mb'           #最大文件体积限制
             filters:
                 mime_types : [
-                    {title : "图片文件", extensions : "jpg,jpeg,gif,png"}
+                    {title : "#{t9n('file.image')}", extensions : "jpg,jpeg,gif,png"}
                 ]
             flash_swf_url: '/assets/plupload/Moxie.swf'  #引入flash相对路径
             max_retries: 3                   #上传失败最大重试次数
@@ -34,7 +34,7 @@ Template.afInput_fileimage.rendered = ->
                         showImagePreview(file, self.$('#preview'))
                         self.$('#progress').show()
                         self.$('#help').show()
-                        self.$('#help').html("开始上传..")
+                        self.$('#help').html("#{t9n('file.uploadTostart')}")
                         #文件添加进队列后处理相关的事情
                 'BeforeUpload': (up, files) ->
                     #每个文件上传前处理相关的事情
@@ -44,18 +44,18 @@ Template.afInput_fileimage.rendered = ->
                 'UploadProgress': (up, file) ->
                     #每个文件上传时处理相关的事情
                     self.$('#progress span').html("#{file.percent}%")
-                    self.$('#help').html("正在上传..")
+                    self.$('#help').html("#{t9n('file.uploadInprogress')}")
                 'FileUploaded': (up, files, info) ->
                     #每个文件上传成功后处理相关的事情
                     res = EJSON.parse(info)
                     Meteor.call "uploadImageWithPath", res.key, 'qiniu', (err, result) ->
                         self.$('#input-hidden').val(result)
                         self.$('#progress').hide()
-                        self.$('#help').html("上传成功!")
+                        self.$('#help').html("#{t9n('file.uploadCompleted')}")
 
                 'Error': (up, err, errTip) ->
                     #上传出错时处理相关的事情
-                    self.$('#help').html("上传错误..")
+                    self.$('#help').html("#{t9n('file.uploadError')}")
                     bootbox.alert errTip
                 'UploadComplete': () ->
                        #队列文件处理完毕后处理相关的事情
@@ -102,7 +102,7 @@ Template.afInput_filemedia.events
         tpl.$('#button-cancel').show()
         tpl.uploader.start()
     "click #button-cancel" : (e, tpl) ->
-        bootbox.confirm "确定取消?", (result) ->
+        bootbox.confirm "#{t9n('rusure.cancel')}", (result) ->
             if result
                 self.$('#preview span').hide()
                 $(e.currentTarget).hide()
@@ -135,8 +135,8 @@ Template.afInput_filemedia.rendered = ->
             max_file_size: '100mb'           #最大文件体积限制
             filters:
                 mime_types : [
-                    {title : "视频文件", extensions : "avi,mp4,rvmb,webm,mov,m4v"}
-                    {title : "音频文件", extensions : "wav,mp3,ogg"}
+                    {title : "#{t9n('file.video')}", extensions : "avi,mp4,rvmb,webm,mov,m4v"}
+                    {title : "#{t9n('file.audio')}", extensions : "wav,mp3,ogg"}
                 ]
             flash_swf_url: '/assets/plupload/Moxie.swf'  #引入flash相对路径
             max_retries: 3                   #上传失败最大重试次数
@@ -153,7 +153,7 @@ Template.afInput_filemedia.rendered = ->
                         self.$('#preview span').html(file.name)
                         self.$('.progress').show()
                         self.$('#help').show()
-                        self.$('#help').html("开始上传..")
+                        self.$('#help').html("#{t9n('file.uploadTostart')}")
                         #文件添加进队列后处理相关的事情
                 'BeforeUpload': (up, files) ->
                     #每个文件上传前处理相关的事情
@@ -167,20 +167,20 @@ Template.afInput_filemedia.rendered = ->
                     progressbar.css("width", "#{file.percent}%")
                     formatSpeed = plupload.formatSize(up.total.bytesPerSec).toUpperCase();
                     progressbar.html("#{file.percent}% - #{formatSpeed}/s")
-                    self.$('#help').html("正在上传..")
+                    self.$('#help').html("#{t9n('file.uploadInprogress')}")
                 'FileUploaded': (up, files, info) ->
                     #每个文件上传成功后处理相关的事情
                     res = EJSON.parse(info)
                     Meteor.call "uploadVideoWithPath", res.key, 'qiniu', res.persistentId, (err, result) ->
                         self.$('#input-hidden').val(result)
                         self.$('.progress').hide()
-                        self.$('#help').html("上传成功!")
+                        self.$('#help').html("#{t9n('file.uploadCompleted')}")
                         self.$('#help').hide()
                         self.$('.btn-group').hide()
 
                 'Error': (up, err, errTip) ->
                     #上传出错时处理相关的事情
-                    self.$('#help').html("上传错误..")
+                    self.$('#help').html("#{t9n('file.uploadError')}")
                     bootbox.alert errTip
                 'UploadComplete': () ->
                        #队列文件处理完毕后处理相关的事情

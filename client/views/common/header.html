@@ -18,9 +18,9 @@
 
 
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href='{{pathFor "profile"}}'>个人主页</a></li>
+                            <li><a href='{{pathFor "profile"}}'>{{t9n "profile.page"}}</a></li>
                             <li class="divider"></li>
-                            <li><a href="/sign-out" >退出</a></li>
+                            <li><a href="/sign-out" >{{t9n 'signOut'}}</a></li>
                         </ul>
                     </div>
 
@@ -28,7 +28,7 @@
                 </div>
                 {{else}}
                 <div class=" pull-right">
-                    <a href="/sign-in" class="button_top" id="login_top">登录/注册</a>
+                    <a href="/sign-in" class="button_top" id="login_top">{{t9n "signIn"}}/{{t9n "signUp"}}</a>
                 </div>
                 {{/if}}
             </div>

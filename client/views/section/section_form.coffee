@@ -23,7 +23,7 @@ AutoForm.hooks
                 return doc
 
         onSuccess: (operation, result, template) ->
-            bootbox.alert "保存成功！" if result?
+            bootbox.alert "#{t9n('success.save')}" if result?
             return
         onError: (operation, err, template) ->
             if err.error?

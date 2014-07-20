@@ -2,19 +2,19 @@ Meteor.startup ->
     @SectionSchema = new SimpleSchema({
         title :
             type : String
-            label : '课程章节名称'
+            label : "#{t9n('section.title')}"
 
         order :
             type : Number
-            label : '章节排序'
+            label : "#{t9n('section.order')}"
 
         course :
             type : String
-            label : '属于哪个课程'
-            
+            label : "#{t9n('section.course')}"
+
         author :
             type : String
-            label : '课程作者'
+            label : "#{t9n('section.author')}"
             autoValue : ->
                 if this.isInsert
                     return Meteor.userId()

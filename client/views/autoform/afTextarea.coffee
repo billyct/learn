@@ -30,9 +30,9 @@ Template.afTextarea_epic.rendered = ->
         preview: 80
       },
       string: {
-        togglePreview: '预览',
-        toggleEdit: '编辑',
-        toggleFullscreen: '全屏'
+        togglePreview: "#{t9n('preview')}",
+        toggleEdit: "#{t9n('edit')}",
+        toggleFullscreen: "#{t9n('fullscreen')}"
       },
       autogrow: false
     }
@@ -46,7 +46,7 @@ Template.afTextarea_markdown.rendered = ->
     @$('textarea').markdown({
         autofocus : false
         savable : false
-        language : 'zh'
+        language : AppSetting.language
     })
 
 

@@ -102,7 +102,7 @@ Meteor.methods({
     createCourse : function(doc) {
         return Courses.insert(doc, function(err, result) {
             if(err) {
-                throw new Meteor.Error(404, "插入课程数据失败！");
+                throw new Meteor.Error(404, t9n('err.createCourse'));
             } else {
                 return result;
             }
@@ -111,19 +111,19 @@ Meteor.methods({
     removeCourse : function(id) {
         Courses.remove({_id: id}, function(err, result) {
             if(err) {
-                throw new Meteor.Error(404, "删除课程数据失败！");
+                throw new Meteor.Error(404, t9n('err.deleteCourse'));
             }
         });
 
         Sections.remove({course: id}, function(err, result) {
             if(err) {
-                throw new Meteor.Error(404, "删除课程相关的章节数据失败！");
+                throw new Meteor.Error(404, t9n('err.deleteSections'));
             }
         });
-        
+
         Lectures.remove({course: id}, function(err, result) {
             if(err) {
-                throw new Meteor.Error(404, "删除课程相关的课时数据失败！");
+                throw new Meteor.Error(404, t9n('err.deleteLectures'));
             }
         });
 

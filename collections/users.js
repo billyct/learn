@@ -27,7 +27,7 @@ Meteor.methods({
 
         Meteor.users.update({_id: Meteor.userId()}, {$set:set}, function(err, result) {
             if(err) {
-                throw new Meteor.Error(404, "更新用户信息失败");
+                throw new Meteor.Error(404, t9n('err.editUser'));
             }
             return result;
         });

@@ -48,7 +48,7 @@ Meteor.methods({
     removeCategory : function(id) {
         Categories.remove({_id : id}, function(err, result) {
             if (err) {
-                throw new Meteor.Error(404, "删除课程类别失败");
+                throw new Meteor.Error(404, t9n('err.deleteCategory'));
             }
         });
         return id;
@@ -58,7 +58,7 @@ Meteor.methods({
 
         return Categories.insert(doc, function(err, result){
             if (err) {
-                throw new Meteor.Error(404, "创建课程类别失败");
+                throw new Meteor.Error(404, t9n('err.createCategory'));
             }
             return result;
         })

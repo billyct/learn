@@ -15,7 +15,7 @@ Meteor.methods({
         if(!study) {
             Studies.insert(doc, function(err, result) {
                 if(err) {
-                    throw new Meteor.Error(404, "创建学习进度失败！");
+                    throw new Meteor.Error(404, t9n('err.createStudy'));
                 }
             });
         }
@@ -33,7 +33,7 @@ Meteor.methods({
             if (!l) {
                 Studies.update({_id: study._id}, {$push:{lectures: {lecture: lecture._id, complete: false}}}, function(err, result) {
                     if(err) {
-                        throw new Meteor.Error(404, "更新课时学习进度失败！");
+                        throw new Meteor.Error(404, t9n('err.editStudy'));
                     }
                 })
             }
@@ -57,13 +57,13 @@ Meteor.methods({
 
             Studies.update({_id: study._id}, {$pull:{lectures :{lecture: lecture._id, complete: false}}}, function(err, result) {
                 if(err) {
-                    throw new Meteor.Error(404, "更新课时学习进度失败！");
+                    throw new Meteor.Error(404, t9n('err.editStudy'));
                 }
             })
 
             Studies.update({_id: study._id}, {$addToSet:{lectures :{lecture: lecture._id, complete: true}}}, function(err, result) {
                 if(err) {
-                    throw new Meteor.Error(404, "更新课时学习进度失败！");
+                    throw new Meteor.Error(404, t9n('err.editStudy'));
                 }
             })
         }

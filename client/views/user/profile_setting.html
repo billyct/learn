@@ -12,7 +12,7 @@
             			<span class="tape"></span>
             			<div class="row">
             				<div class="col-md-12">
-            					<h3>用户设置</h3>
+            					<h3>{{t9n "profile.userSetting"}}</h3>
             				</div>
             			</div>
 
@@ -21,7 +21,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <span class="input-icon"><i class="icon-user"></i></span>
-                                        <input type="text" class="form-control style_2" name="name" placeholder="昵称" value="{{user.profile.name}}">
+                                        <input type="text" class="form-control style_2" name="name" placeholder="{{t9n 'profile.display_name'}}" value="{{user.profile.name}}">
                                     </div>
                                 </div>
             				</div>
@@ -34,7 +34,7 @@
                                             “{{#if address}}{{address}}{{else}}{{email}}{{/if}}”
                                             <a href="#" class="btn btn-sm btn-icon btn-rounded btn-dark"><i class="icon-minus"></i></a>
                                             {{#unless verified}}
-                                            <a href="#" class="btn btn-default btn-rounded">验证邮箱</a>
+                                            <a href="#" class="btn btn-default btn-rounded">{{t9n "profile.emailVerify"}}</a>
                                             {{/unless}}
                                         </p>
                                         {{/each}}
@@ -48,7 +48,7 @@
                                             </div>
 
                                             <div class="col-sm-2">
-                                                <button class="btn btn-default"><i class="icon-plus"></i> 添加邮箱</button>
+                                                <button class="btn btn-default"><i class="icon-plus"></i> {{t9n "profile.emailCreate"}}</button>
                                             </div>
 
                                         </div>
@@ -60,7 +60,7 @@
             				<div class="row">
             					<div class="col-md-12">
             						<div class="form-group">
-            							<textarea rows="5" name="introduce" class="form-control" placeholder="个人介绍">{{user.profile.introduce}}</textarea>
+            							<textarea rows="5" name="introduce" class="form-control" placeholder="{{t9n 'profile.introduce'}}">{{user.profile.introduce}}</textarea>
             						</div>
             					</div>
             				</div>
@@ -70,14 +70,14 @@
                                         {{#if user.profile.github}}
                                         <a href="{{user.profile.github}}" class="btn btn-default btn-icon btn-rounded active"><i class="icon-github"></i></a>
                                         {{else}}
-                                        <a href="#" class="btn btn-default btn-rounded"><i class="icon-github"></i> 未绑定</a>
+                                        <a href="#" class="btn btn-default btn-rounded"><i class="icon-github"></i> {{t9n "profile.unbind"}}</a>
                                         {{/if}}
                                     </p>
                                 </div>
                             </div>
             				<div class="row">
             					<div class="col-md-12">
-            						<input type="submit" value="保存" class="button_medium" id="button-save">
+            						<input type="submit" value="{{t9n 'save'}}" class="button_medium" id="button-save">
             					</div>
             				</div>
             			</form>

@@ -22,10 +22,10 @@
                                 <div class="pull-right">
                                     {{#if $eq ../user._id currentUser._id}}
                                     <div class="btn-group">
-                                        <a href='{{pathFor "course_edit" _id=_id}}' class="btn btn-default btn-icon" data-toggle="tooltip" title="编辑">
+                                        <a href='{{pathFor "course_edit" _id=_id}}' class="btn btn-default btn-icon" data-toggle="tooltip" title="{{t9n 'edit'}}">
                                             <i class="icon-edit"></i>
                                         </a>
-                                        <a href='#' id="button-remove-course" data-cid="{{_id}}" class="btn btn-default btn-icon" data-toggle="tooltip" title="删除">
+                                        <a href='#' id="button-remove-course" data-cid="{{_id}}" class="btn btn-default btn-icon" data-toggle="tooltip" title="{{t9n 'delete'}}">
                                             <i class="icon-cancel-circled2"></i>
                                         </a>
 
@@ -56,9 +56,9 @@
                     {{else}}
 
                     <p>
-                        还没有课程记录,
+                        {{t9n "course.norecord"}},
                         {{#if current}}
-                        <a href='{{pathFor "courses"}}' class="button_medium">去发现课程</a>
+                        <a href='{{pathFor "courses"}}' class="button_medium">{{t9n "course.discover"}}</a>
                         {{/if}}
                     </p>
                     {{/if}}

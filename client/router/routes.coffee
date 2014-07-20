@@ -16,11 +16,11 @@ Router.map ->
             }
         onAfterAction : ->
             SEO.set
-                title: "首页-learn"
+                title: "#{t9n('home')}-learn"
                 meta:
                   'description': metaDescription
                 og:
-                  'title': "首页-learn"
+                  'title': "#{t9n('home')}-learn"
                   'description': metaDescription
 
 
@@ -40,11 +40,11 @@ Router.map ->
             }
         onAfterAction : ->
             SEO.set
-                title: "课程列表-learn"
+                title: "#{t9n('course.list')}-learn"
                 meta:
                   'description': metaDescription
                 og:
-                  'title': "课程列表-learn"
+                  'title': "#{t9n('course.list')}-learn"
                   'description': metaDescription
 
     @route 'courses_by_category',
@@ -65,11 +65,11 @@ Router.map ->
         onAfterAction : ->
             category = Categories.findOne({index:@params.index})
             SEO.set
-                title: "#{category?.name}课程列表-learn"
+                title: "#{category?.name}-#{t9n('course.list')}-learn"
                 meta:
                   'description': metaDescription
                 og:
-                  'title': "#{category?.name}课程列表-learn"
+                  'title': "#{category?.name}-#{t9n('course.list')}-learn"
                   'description': metaDescription
 
 
@@ -86,7 +86,7 @@ Router.map ->
 
         onAfterAction : ->
             SEO.set
-                title: "创建课程-learn"
+                title: "#{t9n('course.create')}-learn"
 
 
     @route 'course_edit',
@@ -108,7 +108,7 @@ Router.map ->
             AccountsEntry.signInRequired(@)
 
             SEO.set
-                title: "编辑课程#{@data().course?.name}-learn"
+                title: "#{t9n('course.edit')}#{@data().course?.name}-learn"
 
 
     @route 'course_detail',
@@ -160,7 +160,7 @@ Router.map ->
 
         onAfterAction : ->
             SEO.set
-                title: "创建课程章节-learn"
+                title: "#{t9n('section.create')}-learn"
 
     @route 'section_edit',
         path : '/tech/courses/:courseId/sections/:_id'
@@ -180,7 +180,7 @@ Router.map ->
             AccountsEntry.signInRequired(@)
         onAfterAction : ->
             SEO.set
-                title: "编辑课程章节#{@data().section?.title}-learn"
+                title: "#{t9n('section.edit')}#{@data().section?.title}-learn"
 
     @route 'lecture_create',
         path : '/tech/courses/:courseId/lectures'
@@ -199,7 +199,7 @@ Router.map ->
             AccountsEntry.signInRequired(@)
         onAfterAction : ->
             SEO.set
-                title: "创建课时-learn"
+                title: "#{t9n('lecture.create')}-learn"
 
     @route 'lecture_edit',
         path : '/tech/courses/:courseId/lectures/:_id'
@@ -222,7 +222,7 @@ Router.map ->
             AccountsEntry.signInRequired(@)
         onAfterAction : ->
             SEO.set
-                title: "编辑课时#{@data().lecture?.title}-learn"
+                title: "#{t9n('lecture.edit')}#{@data().lecture?.title}-learn"
 
 
     @route 'lecture_detail',
@@ -270,9 +270,9 @@ Router.map ->
             }
         onAfterAction : ->
             SEO.set
-                title: "#{@data().user?.profile.name}的个人设置-learn"
+                title: "#{@data().user?.profile.name}-#{t9n('profile.setting')}-learn"
                 og:
-                  'title': "#{@data().user?.profile.name}的个人设置-learn"
+                  'title': "#{@data().user?.profile.name}-#{t9n('profile.setting')}-learn"
 
     @route 'profile',
         path : '/profile/:_id?'
@@ -290,9 +290,9 @@ Router.map ->
             }
         onAfterAction : ->
             SEO.set
-                title: "#{@data().user?.profile.name}的个人页面-learn"
+                title: "#{@data().user?.profile.name}-#{t9n('profile.page')}-learn"
                 og:
-                  'title': "#{@data().user?.profile.name}的个人页面-learn"
+                  'title': "#{@data().user?.profile.name}-#{t9n('profile.page')}-learn"
 
 
 
@@ -311,6 +311,6 @@ Router.map ->
             }
         onAfterAction : ->
             SEO.set
-                title: "课程类别管理-learn"
+                title: "#{t9n('category.management')}-learn"
                 og:
-                  'title': "课程类别管理-learn"
+                  'title': "#{t9n('category.management')}-learn"

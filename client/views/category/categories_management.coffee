@@ -6,11 +6,11 @@ Template.categories_management.events
         t = e.currentTarget
         id = $(t).data('cid')
 
-        bootbox.confirm "确定删除?", (result) ->
+        bootbox.confirm "#{t9n('rusure.delete')}", (result) ->
             if result
                 Meteor.call "removeCategory", id, (err, result) ->
                     bootbox.alert "#{err.error}:#{err.reason}" if err?
-                    bootbox.alert "删除成功" if result?
+                    bootbox.alert "#{t9n('success.delete')}" if result?
     'click a#button-edit-category' : (e, tpl) ->
         t = e.currentTarget
         id = $(t).data('cid')

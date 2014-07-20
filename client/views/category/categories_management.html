@@ -8,24 +8,24 @@
                 </div>
 
                 <div class="col-md-8">
-                    <h3>课程类别管理</h3>
+                    <h3>{{t9n "category.management"}}</h3>
                     <p>
-                        你不能删除拥有课程的课程类别
+                        {{t9n "category.management.rule"}}
 
                     </p>
                     <p>
                         <a href="#" class="btn btn-default btn-rounded" id="button-create-category">
-                            <i class="icon-plus"></i> 添加课程类别
+                            <i class="icon-plus"></i> {{t9n "category.create"}}
                         </a>
                     </p>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>名称</th>
-                                    <th>别名</th>
-                                    <th>拥有的课程数量</th>
-                                    <th>操作</th>
+                                    <th>{{t9n "category.name"}}</th>
+                                    <th>{{t9n "category.index"}}</th>
+                                    <th>{{t9n "category.hasCourse"}}</th>
+                                    <th>{{t9n "operate"}}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -35,11 +35,11 @@
                                     <td>{{index}}</td>
                                     <td><strong>{{course_count}}</strong></td>
                                     <td>
-                                        <a href="#" data-cid="{{_id}}" class="btn btn-default btn-icon btn-rounded" data-toggle="tooltip" title="编辑" id="button-edit-category">
+                                        <a href="#" data-cid="{{_id}}" class="btn btn-default btn-icon btn-rounded" data-toggle="tooltip" title="{{t9n 'edit'}}" id="button-edit-category">
                                             <i class="icon-pencil"></i>
                                         </a>
                                         {{#if $eq course_count 0}}
-                                        <a href="#" data-cid="{{_id}}" class="btn btn-default btn-icon btn-rounded" data-toggle="tooltip" title="删除" id="button-remove-category">
+                                        <a href="#" data-cid="{{_id}}" class="btn btn-default btn-icon btn-rounded" data-toggle="tooltip" title="{{t9n 'delete'}}" id="button-remove-category">
                                             <i class="icon-cancel"></i>
                                         </a>
                                         {{/if}}

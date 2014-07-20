@@ -15,5 +15,5 @@ Template.profile_setting.events
             "profile.introduce" : doc.profile.introduce
 
         Meteor.users.update {_id: Meteor.userId()}, {$set:set}, (err, result) ->
-            bootbox.alert "有错误，保存用户信息失败！" if err?
-            bootbox.alert "保存成功！" if result?
+            bootbox.alert "#{t9n('err.saveUser')}" if err?
+            bootbox.alert "#{t9n('success.save')}" if result?

@@ -112,10 +112,10 @@ footer {
 	padding: 0;
 	margin: 0;
 	position: relative;
-	width: 34%;
+	width: 50%;
 }
 .tabs li:first-child, .tabs li:last-child {
-	width: 33%;
+	width: 50%;
 }
 .tabs li:first-child, .tabs li:first-child a {
 	-webkit-border-radius: 0 0 0 0.4em;

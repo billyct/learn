@@ -13,7 +13,7 @@
                 <div class="col-md-8">
                     {{#autoForm doc=lecture collection="Lectures" id="lectureForm" type=method.type meteormethod=method.call class="form-horizontal"}}
                     <fieldset>
-                        <legend>{{#if isCreate}}创建新课时{{else}}编辑课时:《{{lecture.title}}》{{/if}}</legend>
+                        <legend>{{#if isCreate}}{{t9n "lecture.create"}}{{else}}{{t9n "lecture.edit"}}:《{{lecture.title}}》{{/if}}</legend>
 
                         <div class="form-group">
                             {{> afFieldLabel name="section" class="col-sm-2"}}
@@ -77,8 +77,8 @@
                     <div class="line line-dashed"></div>
                     <div class="form-group m-t-lg m-l-lg">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" id="submit" class="button_medium btn-lg r-n">保存</button>
-                            {{> back_button "取消"}}
+                            <button type="submit" id="submit" class="button_medium btn-lg r-n">{{t9n "save"}}</button>
+                            {{> back_button}}
                         </div>
                     </div>
 

@@ -2,30 +2,30 @@ Meteor.startup ->
     @UploadSchema = new SimpleSchema({
             name :
                 type : String
-                label : '文件名称'
+                label : "#{t9n('upload.name')}"
             path :
                 type : String
-                label : '文件地址'
-                
+                label : "#{t9n('upload.path')}"
+
             persistentId:
                 type: String
-                label : '转码标记查看是否转码成功'
+                label : "#{t9n('upload.persistentId')}"
                 optional : true
 
             type :
                 type : String
                 allowedValues: ['image', 'video', 'audio'],
-                label : '文件类型'
+                label : "#{t9n('upload.type')}"
 
             server :
                 type : String
-                label : '文件所属服务器'
+                label : "#{t9n('upload.server')}"
                 allowedValues: ['local', 'qiniu'],
                 optional : true
 
             user :
                 type : String
-                label : '课程作者'
+                label : "#{t9n('upload.user')}"
                 autoValue : ->
                     if this.isInsert
                         return Meteor.userId()

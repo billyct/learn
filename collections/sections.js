@@ -47,7 +47,7 @@ Meteor.methods({
     createSection : function(doc) {
         return Sections.insert(doc, function(err, result) {
             if(err) {
-                throw new Meteor.Error(404, "插入章节失败！");
+                throw new Meteor.Error(404, t9n('err.createSection'));
             }
             return result;
         });

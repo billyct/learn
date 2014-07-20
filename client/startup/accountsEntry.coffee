@@ -4,7 +4,7 @@ Meteor.startup(->
     homeRoute: '/'
     dashboardRoute: if Session.get('url-target')? then Session.get('url-target') else '/profile'
     showSignupCode: false
-    language : 'zh-cn'
+    language : AppSetting.language
     passwordSignupFields: 'USERNAME_AND_OPTIONAL_EMAIL'
     signInTemplate : 'entry_signIn'
     signUpTemplate : 'entry_signUp'

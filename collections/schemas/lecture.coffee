@@ -2,39 +2,39 @@ Meteor.startup ->
     @LectureSchema = new SimpleSchema({
         title :
             type : String
-            label : '课时名称'
+            label : "#{t9n('lecture.title')}"
 
         order :
             type : Number
-            label : '课时排序'
+            label : "#{t9n('lecture.order')}"
             optional : true
         video :
             type : String
-            label : '课时视频'
+            label : "#{t9n('lecture.video')}"
             optional : true
         text :
             type : String
-            label : '课时文字内容'
+            label : "#{t9n('lecture.text')}"
         audio :
             type : String
-            label : '课时录音'
+            label : "#{t9n('lecture.audio')}"
             optional: true
         type :
             type : String
-            label : '课时类型'
+            label : "#{t9n('lecture.type')}"
             allowedValues: ['text', 'video', 'audio']
         section :
             type : String
-            label : '课时章节'
+            label : "#{t9n('lecture.section')}"
         course :
             type : String
-            label : '所属课程'
+            label : "#{t9n('lecture.course')}"
         time :
             type : String
-            label : '课时时长'
+            label : "#{t9n('lecture.time')}"
         author :
             type : String
-            label : '课程作者'
+            label : "#{t9n('lecture.author')}"
             autoValue : ->
                 if this.isInsert
                     return Meteor.userId()

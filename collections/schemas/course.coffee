@@ -2,41 +2,41 @@ Meteor.startup ->
     @CourseSchema = new SimpleSchema({
         name :
             type : String
-            label : '课程名称'
+            label : "#{t9n('course.name')}"
         index :
             type : String
-            label : '课程别名'
+            label : "#{t9n('course.index')}"
             unique: true
         description :
             type : String
-            label : '课程描述'
+            label : "#{t9n('course.description')}"
         status :
             type : Boolean
-            label : '课程发布状态'
+            label : "#{t9n('course.status')}"
         # price :
         #     type : Number
         #     label : '价格'
-        best_selling :
-            type : Boolean
-            label: '热卖'
-            optional : true
+        # best_selling :
+        #     type : Boolean
+        #     label: '热卖'
+        #     optional : true
         image :
             type : String
-            label : '课程图片'
+            label : "#{t9n('course.image')}"
             optional : true
         video :
             type : String #relate to uploads
-            label : '课程视频'
+            label : "#{t9n('course.video')}"
             optional : true
         categories :
             type : [String]
-            label : '课程类别'
+            label : "#{t9n('course.categories')}"
             minCount: 1
-            maxCount: 3
+            # maxCount: 3
 
         author :
             type : String
-            label : '课程作者'
+            label : "#{t9n('course.author')}"
             autoValue : ->
                 if this.isInsert
                     return Meteor.userId()

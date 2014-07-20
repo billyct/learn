@@ -13,7 +13,7 @@
                 <div class="col-md-8">
                     {{#autoForm doc=section collection="Sections" id="sectionForm" type=method.type meteormethod=method.call}}
                     <fieldset>
-                        <legend>{{#if isCreate}}创建新{{else}}编辑{{/if}}章节</legend>
+                        <legend>{{#if isCreate}}{{t9n "section.create"}}{{else}}{{t9n "section.edit"}}{{/if}}</legend>
                         {{> afQuickField name='title'}}
 
                         {{> afFieldInput name="course" type="hidden" value=course._id}}
@@ -22,8 +22,8 @@
                     </fieldset>
                     <div class="line line-dashed"></div>
                     <div class="form-group m-t-lg">
-                        <button type="submit" class="button_medium btn-lg r-n">保存</button>
-                        {{> back_button "取消"}}
+                        <button type="submit" class="button_medium btn-lg r-n">{{t9n "save"}}</button>
+                        {{> back_button}}
                     </div>
 
                     {{/autoForm}}

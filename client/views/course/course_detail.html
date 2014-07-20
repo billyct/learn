@@ -46,7 +46,7 @@
                         	<span id="end"><i class="icon-trophy"></i></span>
                             <div class="progress">
                                 <div class="progress-bar progress-bar-info" role="progressbar" style="width: {{percent complete_count course.lecture_count}}%;">
-                                    <span>您已经完成了<strong>{{course.lecture_count}}</strong>个课时中的<strong>{{complete_count}}</strong>课时</span>
+                                    <span>{{t9n "course.uHaveCompleted"}}<strong>{{course.lecture_count}}/{{complete_count}}</strong>{{t9n "lecture"}}</span>
                                 </div>
                             </div>
                         </div>
@@ -92,9 +92,9 @@
             <aside class="col-md-4">
 
                 {{#if $eq course.teacher._id currentUser._id}}
-                <a href='{{pathFor "course_edit" _id=course._id}}' class=" button_fullwidth-3">编辑课程信息</a>
+                <a href='{{pathFor "course_edit" _id=course._id}}' class=" button_fullwidth-3">{{t9n "course.edit"}}</a>
                 {{else}}
-                <a href="{{#if lectureId_to_learn}}{{pathFor 'lecture_detail' _id=lectureId_to_learn}}{{/if}}" class=" button_fullwidth-3">开始学习</a>
+                <a href="{{#if lectureId_to_learn}}{{pathFor 'lecture_detail' _id=lectureId_to_learn}}{{/if}}" class=" button_fullwidth-3">{{t9n "startToLearn"}}</a>
                 {{/if}}
 
 
@@ -123,19 +123,19 @@
                     <div class="line line-dashed"></div>
 
 
-                    <h4>课时 <span class="pull-right">{{course.lecture_count}}</span></h4>
-                    <h4>时长 <span class="pull-right">{{course.time_count.minutes}}:{{course.time_count.seconds}}</span></h4>
+                    <h4>{{t9n "lecture"}} <span class="pull-right">{{course.lecture_count}}</span></h4>
+                    <h4>{{t9n "lecture.time"}} <span class="pull-right">{{course.time_count.minutes}}:{{course.time_count.seconds}}</span></h4>
 
 
 
            </div>
 
             <div class="box_style_1">
-                    <h4>说明</h4>
+                    <h4>{{t9n "legend"}}</h4>
                     <ul class="legend_course">
-                          <li id="tostart">等待开始</li>
-                          <li id="inprogress">正在进行</li>
-                          <li id="completed">已经完成</li>
+                          <li id="tostart">{{t9n "tostart"}}</li>
+                          <li id="inprogress">{{t9n "inprogress"}}</li>
+                          <li id="completed">{{t9n "completed"}}</li>
                      </ul>
            </div>
          </aside> <!-- End col-md-4 -->

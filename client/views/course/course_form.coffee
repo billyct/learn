@@ -32,7 +32,7 @@ AutoForm.hooks
     courseForm :
 
         onSuccess: (operation, result, template) ->
-            bootbox.alert "保存成功！" if result?
+            bootbox.alert "#{t9n('success.save')}" if result?
             if result? and operation is 'createCourse'
                 Router.go("course_edit", {_id: result})
         onError: (operation, err, template) ->

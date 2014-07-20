@@ -1,9 +1,9 @@
 <template name="courses_list_item">
 
     <div class="col-item">
-        {{#if best_selling}}
+        <!-- {{#if best_selling}}
         <span class="ribbon_course"></span>
-        {{/if}}
+        {{/if}} -->
         <div class="photo">
             <a href="{{pathFor 'course_detail' index=index}}">
                 {{#if poster}}
@@ -54,7 +54,7 @@
             </div>
             <div class="text-center clearfix b-t">
                 <a href="{{pathFor 'course_detail' index=index}}" class="btn btn-default btn-block m-t-sm r-n">
-                    <i class="icon-list"></i>查看课程
+                    <i class="icon-list"></i>{{t9n "course.view"}}
                 </a>
             </div>
         </div>

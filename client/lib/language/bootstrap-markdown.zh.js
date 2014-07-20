@@ -1,9 +1,9 @@
 /**
- * French translation for bootstrap-markdown
+ * 中文翻译 for bootstrap-markdown 
  * Benoît Bourgeois <bierdok@gmail.com>
  */
 ;(function($){
-  $.fn.markdown.messages['zh'] = {
+  $.fn.markdown.messages['zh-cn'] = {
     'Bold': "加粗",
     'Italic': "斜体",
     'Heading': "标题",

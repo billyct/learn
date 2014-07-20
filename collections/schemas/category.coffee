@@ -1,15 +1,16 @@
 Meteor.startup ->
+
     @CategorySchema = new SimpleSchema({
         name :
             type : String
-            label : "分类名称"
+            label : "#{t9n('category.name')}"
             max : 200
         index :
             type : String
-            label : '分类别名'
+            label : "#{t9n('category.index')}"
         order :
             type : Number
-            label : '分类排序'
+            label : "#{t9n('category.order')}"
             min : 1
             optional : true
 
